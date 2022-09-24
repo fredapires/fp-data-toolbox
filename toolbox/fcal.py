@@ -11,8 +11,7 @@
 
 # %% ---importing main module for query functions and more
 
-from data_mgmt_fp import eda
-from telnetlib import BRK
+from toolbox import eda
 
 
 # %% --- Defining time functions...
