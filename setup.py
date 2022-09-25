@@ -17,7 +17,7 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/fredapires/fp_data_toolbox/issues"
     },
     license='MIT',
-    packages=['toolbox'],
+    packages=['fp_data_toolbox'],
     install_requires=[
         'pandas',
         'numpy',
