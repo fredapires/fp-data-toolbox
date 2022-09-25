@@ -14,6 +14,7 @@
 - [ ] TODO figure out how to `pip install` this project from work pc?
 - [ ] TODO install on home pc
 - [ ] TODO install on work laptop pc
+- [ ] TODO review python snippets and look for snippets that could be abstracted into functions
 
 ### **In Progress...**
 
