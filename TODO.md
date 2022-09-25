@@ -1,4 +1,4 @@
-# **To Do List**
+# **To Dos**
 
 ---
 
@@ -25,3 +25,4 @@
 - x
 
 <br><br>
+pip install git+<https://github.com/fredapires/fp_data_toolbox.git>
