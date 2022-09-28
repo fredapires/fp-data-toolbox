@@ -1,5 +1,6 @@
 ### [ ] TODO deprecate old / unused functions
 
+
 # %% --- Defining pandas df functions...
 # Copy pandas df to clipboard
 def copi_df(data_input):
@@ -24,8 +25,6 @@ def join_df_index(df1_left_input, df2_right_input, lft_suff='_left', rgt_suff='_
     joined_df = df1_left_input.join(
         df2_right_input, lsuffix=lft_suff, rsuffix=rgt_suff)
     return joined_df
-
-
 
 
 
