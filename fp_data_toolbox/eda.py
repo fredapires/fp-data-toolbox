@@ -2,14 +2,14 @@
 
 
 # %% --- Defining pandas df functions...
-# Copy pandas df to clipboard
+### Copy pandas df to clipboard
 def copi_df(data_input):
     import pandas as pd
     copi_df = pd.DataFrame(data_input)
     copi_df.to_clipboard(excel=True, index=False, header=True)
     del copi_df
 
-# Copy pandas df columns to clipboard
+### Copy pandas df columns to clipboard
 def copi_colm(data_input):
     import pandas as pd
     colm_list = list(data_input.columns)
@@ -20,20 +20,16 @@ def copi_colm(data_input):
     del colm_df
 
 
-# pandas df join by index
+### pandas df join by index
 def join_df_index(df1_left_input, df2_right_input, lft_suff='_left', rgt_suff='_right'):
     joined_df = df1_left_input.join(
         df2_right_input, lsuffix=lft_suff, rsuffix=rgt_suff)
     return joined_df
 
 
-
-
 # %% --- Defining visualization functions...
 
-# pandas df correlation matrix
-
-
+### pandas df correlation matrix
 def corr_matrix(data_input, corr_cols_input):
     import pandas as pd
     import numpy as np
@@ -56,7 +52,7 @@ def corr_matrix(data_input, corr_cols_input):
 
 
 # %% --- misc. pandas functions
-# converting field to datetime data type
+### converting field to datetime data type
 def cast_as_datetime(df_input, colm_input):
     import pandas as pd
     df_input[colm_input] = pd.to_datetime(df_input[colm_input],
@@ -68,7 +64,7 @@ def cast_as_datetime(df_input, colm_input):
 # %% --- Defining main automatic EDA functions
 
 
-# pandas profiler df report - show minimal
+### pandas profiler df report - show minimal
 def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=True)
@@ -76,7 +72,7 @@ def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     del profile
 
 
-# pandas profiler df report - full to HTML file
+### pandas profiler df report - full to HTML file
 def pd_profile_save(data_input, title_input="Pandas Profiling Report", minimal='True'):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=minimal)
@@ -86,14 +82,14 @@ def pd_profile_save(data_input, title_input="Pandas Profiling Report", minimal='
     del html_file_name
 
 
-# dataprep report show
+### dataprep report show
 def dataprep_rprt_show(df_input):
     from dataprep.eda import create_report
     dataprep_rprt = create_report(df_input)
     dataprep_rprt.show_browser()
 
 
-# dataprep report save
+### dataprep report save
 def dataprep_rprt_save(df_input, title_input="Pandas Profiling Report"):
     from dataprep.eda import create_report
     dataprep_rprt = create_report(df_input)
@@ -101,7 +97,7 @@ def dataprep_rprt_save(df_input, title_input="Pandas Profiling Report"):
     dataprep_rprt.show_browser()
 
 
-# default data population monitor report generation popmon
+### default data population monitor report generation popmon
 def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1w", outerbound_2=7, outerbound_1=4, ref_wndw_input=4):
     import pandas as pd
     features_input_fmt = time_axis_colm+":"+features_input
