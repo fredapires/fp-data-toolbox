@@ -10,14 +10,13 @@
 
 <br><br>
 
-
 - TODO refactor to dos in this project to conform to final to do format: 2022-10-04
 
-- [ ] TODO abstract common df functions from `mtg-proj` into functions within this project
-- [ ] TODO figure out how to `pip install` this project from work pc?
-- [ ] TODO install on home pc
-- [ ] TODO install on work laptop pc
-- [ ] TODO review python snippets and look for snippets that could be abstracted into functions
+- TODO abstract common df functions from `mtg-proj` into functions within this project
+- DONE figure out how to `pip install` this project from work pc?
+- DONE install on home pc
+- DONE install on work laptop pc
+- TODO review python snippets and look for snippets that could be abstracted into functions
 
 ### **In Progress...**
 

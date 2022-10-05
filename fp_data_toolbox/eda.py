@@ -1,4 +1,4 @@
-### [ ] TODO deprecate old / unused functions
+### TODO deprecate old / unused functions
 
 
 # %% --- Defining pandas df functions...
@@ -8,6 +8,7 @@ def copi_df(data_input):
     copi_df = pd.DataFrame(data_input)
     copi_df.to_clipboard(excel=True, index=False, header=True)
     del copi_df
+
 
 ### Copy pandas df columns to clipboard
 def copi_colm(data_input):
