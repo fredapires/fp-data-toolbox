@@ -53,7 +53,7 @@ itsdangerous==2.1.2
 jarowinkler==1.2.1
 jedi==0.18.1
 Jinja2==3.0.3
-joblib==1.1.0
+joblib>=1.2.0
 jsonpath-ng==1.5.3
 jsonschema==4.16.0
 jupyter-core==4.11.1
