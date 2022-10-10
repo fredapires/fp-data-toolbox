@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='fp_data_toolbox',
-    version='0.0.6', ### MUST increment this whenever we would like to make changes
+    version='0.0.7', ### MUST increment this whenever we would like to make changes
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='Testing installation of Package',

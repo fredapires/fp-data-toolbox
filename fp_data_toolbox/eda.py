@@ -1,7 +1,10 @@
 ### TODO deprecate old / unused functions
 
 
-# %% --- Defining pandas df functions...
+
+# %% --- 
+# Defining pandas df functions...
+###=============================================
 ### Copy pandas df to clipboard
 def copi_df(data_input):
     import pandas as pd
@@ -28,7 +31,29 @@ def join_df_index(df1_left_input, df2_right_input, lft_suff='_left', rgt_suff='_
     return joined_df
 
 
-# %% --- Defining visualization functions...
+### TODO create function that merges and cleans output df
+def df_merge_clean_func():
+    # df_merge = pd.merge(df, df_existing, on=['name'], how='outer')
+    # # cleaning
+    # df_merge['count_x'] = df_merge['count_x'].fillna(0)
+    # df_merge['count_y'] = df_merge['count_y'].fillna(0)
+    # df_merge = df_merge.rename(columns={
+    #     "count_x": "count_src", 
+    #     "count_y": "count_tgt"
+    #     })
+
+    # df_merge=df_merge.sort_values(by=['name'])
+    # df_merge = df_merge.reindex([ # not sure if this is necessary
+    #     'name',
+    #     'count_src',
+    #     'count_tgt'
+    # ], axis=1)
+    return
+
+
+# %% --- 
+# Defining visualization functions...
+###=============================================
 
 ### pandas df correlation matrix
 def corr_matrix(data_input, corr_cols_input):
@@ -52,7 +77,9 @@ def corr_matrix(data_input, corr_cols_input):
     return corr_df
 
 
-# %% --- misc. pandas functions
+# %% --- 
+# misc. pandas functions
+###=============================================
 ### converting field to datetime data type
 def cast_as_datetime(df_input, colm_input):
     import pandas as pd
@@ -62,7 +89,9 @@ def cast_as_datetime(df_input, colm_input):
                                         )
 
 
-# %% --- Defining main automatic EDA functions
+# %% --- 
+# Defining main automatic EDA functions
+###=============================================
 
 
 ### pandas profiler df report - show minimal
