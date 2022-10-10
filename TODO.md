@@ -16,6 +16,7 @@
 
 - TODO review how to setup virtual environments for projects: 2022-10-10
     - setup virtual environment (/venv in all projects) and automated script for rebuilding venv
+    - See [dev_env_setup.bat](dev_env_setup.bat), [venv](venv/)
     - [ ] `fp_data_toolbox`
     - [ ] `mtg-proj`
     - [ ] `music-prod`
