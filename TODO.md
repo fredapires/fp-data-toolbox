@@ -14,7 +14,7 @@
 
 - TODO review simple python functions that should be snippets (due to simplicity)
 
-- TODO complete [master .bat script](./scripts/batch/master_script.bat) for orchestrating all updates at once
+- TODO complete [master .bat script](scripts/batch/_master_script.bat) for orchestrating all updates at once
 
 - TODO review how to setup virtual environments for projects: 2022-10-10
     - setup virtual environment (/venv in all projects) and automated script for rebuilding venv
