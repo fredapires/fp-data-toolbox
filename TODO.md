@@ -10,6 +10,8 @@
 
 <br>
 
+- TODO: setup `project_path` module in this project:2022-10-10
+
 - TODO review simple python functions that should be snippets (due to simplicity)
 
 - TODO complete [master .bat script](./scripts/batch/master_script.bat) for orchestrating all updates at once
