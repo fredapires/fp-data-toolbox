@@ -100,7 +100,7 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
     pretty inneficient
     :param df_1: the left table to join
     :param df_2: the right table to join
-    :param key1: key column of the left table
+    :param key1: key column of the left tabl
     :param key2: key column of the right table
     :param threshold: how close the matches should be to return a match, based on Levenshtein distance
     :param limit: the amount of matches that will get returned, these are sorted high to low
