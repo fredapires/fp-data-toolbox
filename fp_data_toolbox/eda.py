@@ -93,24 +93,33 @@ def cast_as_datetime(df_input, colm_input):
 # =============================================
 
 # fuzzy matching logic
-def fuzzy_merge_dfs(df1, df2, _index='concat_index'):
-    import difflib
+def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
+    from thefuzz import fuzz
+    from thefuzz import process
+    """
+    pretty inneficient
+    :param df_1: the left table to join
+    :param df_2: the right table to join
+    :param key1: key column of the left table
+    :param key2: key column of the right table
+    :param threshold: how close the matches should be to return a match, based on Levenshtein distance
+    :param limit: the amount of matches that will get returned, these are sorted high to low
+    :return: dataframe with boths keys and matches
+    """
+    s = df_2[key2].tolist()
 
-    # create duplicate column to retain team name from df2
-    df2[_index+'_match'] = df2[_index]
+    m = df_1[key1].apply(lambda x: process.extract(x, s, limit=limit))
+    df_1['matches'] = m
 
-    # convert team name in df2 to team name it most closely matches in df1
-    df2[_index] = df2[_index].apply(
-        lambda x: difflib.get_close_matches(x, df1[_index])[0])
+    m2 = df_1['matches'].apply(lambda x: ', '.join(
+        [i[0] for i in x if i[1] >= threshold]))
+    df_1['matches'] = m2
 
-    # merge the DataFrames into one
-    df3 = df1.merge(df2)
-    # view final DataFrame
-    print(df3)
-    return df3
-
+    return df_1
 
 # pandas profiler df report - show minimal
+
+
 def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=True)
