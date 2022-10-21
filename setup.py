@@ -6,14 +6,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='fp_data_toolbox',
-    version='0.0.8', ### MUST increment this whenever we would like to make changes
+    version='0.0.9',  # MUST increment this whenever we would like to make changes
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='Testing installation of Package',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/fredapires/fp_data_toolbox',
-    project_urls = {
+    project_urls={
         "Bug Tracker": "https://github.com/fredapires/fp_data_toolbox/issues"
     },
     license='MIT',

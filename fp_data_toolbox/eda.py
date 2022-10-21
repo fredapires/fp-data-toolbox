@@ -1,11 +1,10 @@
-### TODO deprecate old / unused functions
+# TODO deprecate old / unused functions
 
 
-
-# %% --- 
+# %% ---
 # Defining pandas df functions...
-###=============================================
-### Copy pandas df to clipboard
+# =============================================
+# Copy pandas df to clipboard
 def copi_df(data_input):
     import pandas as pd
     copi_df = pd.DataFrame(data_input)
@@ -13,7 +12,7 @@ def copi_df(data_input):
     del copi_df
 
 
-### Copy pandas df columns to clipboard
+# Copy pandas df columns to clipboard
 def copi_colm(data_input):
     import pandas as pd
     colm_list = list(data_input.columns)
@@ -24,21 +23,21 @@ def copi_colm(data_input):
     del colm_df
 
 
-### pandas df join by index
+# pandas df join by index
 def join_df_index(df1_left_input, df2_right_input, lft_suff='_left', rgt_suff='_right'):
     joined_df = df1_left_input.join(
         df2_right_input, lsuffix=lft_suff, rsuffix=rgt_suff)
     return joined_df
 
 
-### TODO create function that merges and cleans output df
+# TODO create function that merges and cleans output df
 def df_merge_clean_func():
     # df_merge = pd.merge(df, df_existing, on=['name'], how='outer')
     # # cleaning
     # df_merge['count_x'] = df_merge['count_x'].fillna(0)
     # df_merge['count_y'] = df_merge['count_y'].fillna(0)
     # df_merge = df_merge.rename(columns={
-    #     "count_x": "count_src", 
+    #     "count_x": "count_src",
     #     "count_y": "count_tgt"
     #     })
 
@@ -51,11 +50,11 @@ def df_merge_clean_func():
     return
 
 
-# %% --- 
+# %% ---
 # Defining visualization functions...
-###=============================================
+# =============================================
 
-### pandas df correlation matrix
+# pandas df correlation matrix
 def corr_matrix(data_input, corr_cols_input):
     import pandas as pd
     import numpy as np
@@ -77,24 +76,41 @@ def corr_matrix(data_input, corr_cols_input):
     return corr_df
 
 
-# %% --- 
+# %% ---
 # misc. pandas functions
-###=============================================
-### converting field to datetime data type
+# =============================================
+# converting field to datetime data type
 def cast_as_datetime(df_input, colm_input):
     import pandas as pd
     df_input[colm_input] = pd.to_datetime(df_input[colm_input],
-                                        infer_datetime_format=True,
-                                        errors='coerce'
-                                        )
+                                          infer_datetime_format=True,
+                                          errors='coerce'
+                                          )
 
 
-# %% --- 
+# %% ---
 # Defining main automatic EDA functions
-###=============================================
+# =============================================
+
+# fuzzy matching logic
+def fuzzy_merge_dfs(df1, df2, _index='concat_index'):
+    import difflib
+
+    # create duplicate column to retain team name from df2
+    df2[_index+'_match'] = df2[_index]
+
+    # convert team name in df2 to team name it most closely matches in df1
+    df2[_index] = df2[_index].apply(
+        lambda x: difflib.get_close_matches(x, df1[_index])[0])
+
+    # merge the DataFrames into one
+    df3 = df1.merge(df2)
+    # view final DataFrame
+    print(df3)
+    return df3
 
 
-### pandas profiler df report - show minimal
+# pandas profiler df report - show minimal
 def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=True)
@@ -102,7 +118,7 @@ def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     del profile
 
 
-### pandas profiler df report - full to HTML file
+# pandas profiler df report - full to HTML file
 def pd_profile_save(data_input, title_input="Pandas Profiling Report", minimal='True'):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=minimal)
@@ -112,14 +128,14 @@ def pd_profile_save(data_input, title_input="Pandas Profiling Report", minimal='
     del html_file_name
 
 
-### dataprep report show
+# dataprep report show
 def dataprep_rprt_show(df_input):
     from dataprep.eda import create_report
     dataprep_rprt = create_report(df_input)
     dataprep_rprt.show_browser()
 
 
-### dataprep report save
+# dataprep report save
 def dataprep_rprt_save(df_input, title_input="Pandas Profiling Report"):
     from dataprep.eda import create_report
     dataprep_rprt = create_report(df_input)
@@ -127,7 +143,7 @@ def dataprep_rprt_save(df_input, title_input="Pandas Profiling Report"):
     dataprep_rprt.show_browser()
 
 
-### default data population monitor report generation popmon
+# default data population monitor report generation popmon
 def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1w", outerbound_2=7, outerbound_1=4, ref_wndw_input=4):
     import pandas as pd
     features_input_fmt = time_axis_colm+":"+features_input
@@ -183,7 +199,7 @@ def dtale_analysis_show(df_input):
     del test_dtale
 
 
-### Pivot table
+# Pivot table
 # def df_pivot_brwsr(df_input, output_file_name='pivottablejs'):
 #     import webbrowser
 #     from pivottablejs import pivot_ui
