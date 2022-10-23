@@ -121,7 +121,7 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
 # =============================================
 # Pandas Data Profile Report functions
 # TODO Create function that autogenerates and saves pd_profile_report to input_path
-def pd_profile_fp_save(df, title_input="Pandas Profiling Report", profile):
+def pd_profile_fp_save(df, profile, title_input="Pandas Profiling Report"):
     # pandas profiler df report - show minimal
     return profile
 
