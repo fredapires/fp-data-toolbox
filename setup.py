@@ -25,7 +25,7 @@ setuptools.setup(
     ###
     # exclude_package_data={'fp_data_toolbox': ['data/*.src']},
     include_package_data=True,
-    package_dir={'fp_data_toolbox'},
+    # package_dir={'fp_data_toolbox'},
     package_data={'pandas-profiling-config': [
         '*.yaml'
     ]},
