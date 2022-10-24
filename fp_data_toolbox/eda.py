@@ -121,29 +121,32 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
 # =============================================
 # Pandas Data Profile Report functions
 # TODO Create function that autogenerates and saves pd_profile_report to input_path
-def pd_profile_fp_save(df, profile, title_input="Pandas Profiling Report"):
+def pd_profile_fp_save(df, _config_file="pandas-profiling-config.yml", _title_input="Pandas_Profiling_Report"):
     # pandas profiler df report - save custom config
     import pandas as pd
     from pandas_profiling import ProfileReport
 
-    profile = ProfileReport(
-        df,
-        title="Agriculture Data",
+    # profile = ProfileReport(
+    #     df,
+    #     title=_title_input,
 
-        dataset={
-            "description": "This profiling report was generated for...",
-            "copyright_holder": "",
-                                "copyright_year": "",
-                                "url": "",
-        },
+    #     dataset={
+    #         "description": "This profiling report was generated for...",
+    #         "copyright_holder": "",
+    #                             "copyright_year": "",
+    #                             "url": "",
+    #     },
 
-        variables={
-            "descriptions": {
-                "var_1": "Example Variable 1",
-                "var_1": "Example Variable 2",
-            }
-        }
-    )
+    #     variables={
+    #         "descriptions": {
+    #             "var_1": "Example Variable 1",
+    #             "var_1": "Example Variable 2",
+    #         }
+    #     }
+    # )
+
+    profile = ProfileReport(df, config_file=_config_file)
+    profile.to_file(_title_input+".html")
 
     return profile
 
