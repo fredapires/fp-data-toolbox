@@ -23,10 +23,10 @@ setuptools.setup(
     ###
     # Including data packages
     ###
-    exclude_package_data={'fp_data_toolbox': ['data/*.src']},
+    # exclude_package_data={'fp_data_toolbox': ['data/*.src']},
     include_package_data=True,
-    package_data={'fp_data_toolbox': [
-        'pandas-profiling-config/*.yaml'
+    package_data={'pandas-profiling-config': [
+        '*.yaml'
     ]},
     package_dir={'': 'fp_data_toolbox'},
     # packages=setuptools.find_packages(where='src'),
