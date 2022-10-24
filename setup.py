@@ -18,7 +18,8 @@ setuptools.setup(
     },
     license='MIT',
     packages=[
-        'fp_data_toolbox'
+        'fp_data_toolbox',
+        'pandas-profiling-config'
     ],
     ###
     # Including data packages
