@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='fp_data_toolbox',
-    version='0.1.05',  # MUST increment this whenever we would like to make changes
+    version='0.1.06',  # MUST increment this whenever we would like to make changes
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='Personal data toolbox for Fred Pires',
@@ -23,13 +23,13 @@ setuptools.setup(
     ###
     # Including data packages
     ###
-    exclude_package_data={'config': ['data/*.src']},
+    exclude_package_data={'fp_data_toolbox': ['data/*.src']},
     include_package_data=True,
-    package_data={'config': [
-        'pandas-profiling/*.yaml'
+    package_data={'fp_data_toolbox': [
+        'pandas-profiling-config/*.yaml'
     ]},
-    package_dir={'': 'src'},
-    packages=setuptools.find_packages(where='src'),
+    package_dir={'': 'fp_data_toolbox'},
+    # packages=setuptools.find_packages(where='src'),
     ###
     install_requires=[
         'pandas',
