@@ -151,6 +151,51 @@ def pd_profile_fp_save(df, _config_file="pandas-profiling-config.yml", _title_in
     return profile
 
 
+def pd_profile_fp_save(df, _config_file, _title_input="pandas_profiling_report", _calculate_corr_matrix="false"):
+    # pandas profiler df report - save custom config
+    from datetime import date
+    import pandas as pd
+    from pandas_profiling import ProfileReport
+
+    # variable setup
+    _output_path = _title_input+".html"
+
+    # pandas profiling setup
+    profile = ProfileReport(
+        #
+        df,
+        title=_title_input,
+        config_file=_config_file,
+
+        #
+        dataset={
+            "description": 'Test Pandas Profiling Report. More words here...',
+            "creator": 'Fred Pires',
+            "author": 'Fred Pires',
+            "copyright_year": str(date.today().year),
+        },
+
+        # variables description
+        # variables={
+        #     "descriptions": {
+        #         'SNSH_YR_WK': 'snapshot year week value.'
+        #     }
+        # },
+        #
+
+        correlations={
+            "auto": {
+                "calculate": _calculate_corr_matrix
+            }
+        },
+        #
+    )
+    # output
+    profile.to_file(_output_path)
+    profile.to_widgets()
+    return
+
+
 def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(data_input, title=title_input, minimal=True)
