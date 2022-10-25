@@ -120,58 +120,28 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
 
 # =============================================
 # Pandas Data Profile Report functions
-# TODO Create function that autogenerates and saves pd_profile_report to input_path
-def pd_profile_fp_save(df, _config_file="pandas-profiling-config.yml", _title_input="Pandas_Profiling_Report"):
-    # pandas profiler df report - save custom config
-    import pandas as pd
-    from pandas_profiling import ProfileReport
+# DONE Create function that autogenerates and saves pd_profile_report to output_path
 
-    # profile = ProfileReport(
-    #     df,
-    #     title=_title_input,
-
-    #     dataset={
-    #         "description": "This profiling report was generated for...",
-    #         "copyright_holder": "",
-    #                             "copyright_year": "",
-    #                             "url": "",
-    #     },
-
-    #     variables={
-    #         "descriptions": {
-    #             "var_1": "Example Variable 1",
-    #             "var_1": "Example Variable 2",
-    #         }
-    #     }
-    # )
-
-    profile = ProfileReport(df, config_file=_config_file)
-    profile.to_file(_title_input+".html")
-
-    return profile
-
-
-def pd_profile_fp_save(df, _config_file, _title_input="pandas_profiling_report", _calculate_corr_matrix="false"):
+def pd_prfl_rprt_custom(df, config_file, output_dir, title_input="",  calculate_corr_matrix_bool="false"):
     # pandas profiler df report - save custom config
     from datetime import date
     import pandas as pd
     from pandas_profiling import ProfileReport
 
     # variable setup
-    _output_path = _title_input+".html"
+    output_path = output_dir + title_input + "pd_prfl_rprt.html"
 
     # pandas profiling setup
     profile = ProfileReport(
         #
         df,
-        title=_title_input,
-        config_file=_config_file,
+        title=title_input,
+        config_file=config_file,
 
         #
         dataset={
             "description": 'Test Pandas Profiling Report. More words here...',
             "creator": 'Fred Pires',
-            "author": 'Fred Pires',
             "copyright_year": str(date.today().year),
         },
 
@@ -185,15 +155,17 @@ def pd_profile_fp_save(df, _config_file, _title_input="pandas_profiling_report",
 
         correlations={
             "auto": {
-                "calculate": _calculate_corr_matrix
+                "calculate": calculate_corr_matrix_bool
             }
         },
         #
     )
     # output
-    profile.to_file(_output_path)
+    profile.to_file(output_path)
     profile.to_widgets()
     return
+
+# =============================================
 
 
 def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
