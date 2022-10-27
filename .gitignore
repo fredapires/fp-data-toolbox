@@ -1,3 +1,8 @@
+
+
+# excluding example data
+# mtg_etl/resources/scryfall_api_data/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
