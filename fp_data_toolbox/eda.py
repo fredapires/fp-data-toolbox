@@ -175,7 +175,7 @@ def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
         df,
         title=title_input,
         minimal=True,
-        infer_dtypes=True
+        infer_dtypes=True,
         #
         vars={
             "cat": {
@@ -183,7 +183,7 @@ def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
                 "characters": "false",
                 "words": "false"
             }
-        }
+        },
         #
         correlations={
             "pearson": {
@@ -204,12 +204,14 @@ def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
             "auto": {
                 "calculate": "true"
             }
-        }
+        },
+        #
         plot={
             "histogram": {
                 "x_axis_labels": "false"
             }
-        }
+        },
+        #
         samples={
             "random": "10"
         }
