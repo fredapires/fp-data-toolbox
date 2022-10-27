@@ -16,7 +16,7 @@ dataset:
 #     descriptions: {}
 
 # infer dtypes
-infer_dtypes: true
+infer_dtypes: true ## changed for SCF trans version
 
 # Show the description at each variable (in addition to the overview tab)
 show_variable_description: true

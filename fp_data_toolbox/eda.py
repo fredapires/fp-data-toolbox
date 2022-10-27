@@ -122,7 +122,7 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
 # Pandas Data Profile Report functions
 # DONE Create function that autogenerates and saves pd_profile_report to output_path
 
-def pd_prfl_rprt_custom(df, config_file, output_dir, title_input="",  calculate_corr_matrix_bool="false"):
+def pandas_profiling_custom(df, config_file, output_dir, title_input="",  calculate_corr_matrix_bool="false"):
     # pandas profiler df report - save custom config
     from datetime import date
     import pandas as pd
@@ -168,21 +168,53 @@ def pd_prfl_rprt_custom(df, config_file, output_dir, title_input="",  calculate_
 # =============================================
 
 
-def pd_profile_min_show(data_input, title_input="Pandas Profiling Report"):
+def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
-    profile = ProfileReport(data_input, title=title_input, minimal=True)
+    profile = ProfileReport(
+        #
+        df,
+        title=title_input,
+        minimal=True,
+        infer_dtypes=True
+        #
+        vars={
+            "cat": {
+                "length": "false",
+                "characters": "false",
+                "words": "false"
+            }
+        }
+        #
+        correlations={
+            "pearson": {
+                "calculate": "false"
+            },
+            "spearman": {
+                "calculate": "false"
+            },
+            "kendall": {
+                "calculate": "false"
+            },
+            "phi_k": {
+                "calculate": "false"
+            },
+            "cramers": {
+                "calculate": "false"
+            },
+            "auto": {
+                "calculate": "true"
+            }
+        }
+        plot={
+            "histogram": {
+                "x_axis_labels": "false"
+            }
+        }
+        samples={
+            "random": "10"
+        }
+    )
     profile.to_notebook_iframe()
-    del profile
-
-
-# pandas profiler df report - full to HTML file
-def pd_profile_save(data_input, title_input="Pandas Profiling Report", minimal='True'):
-    from pandas_profiling import ProfileReport
-    profile = ProfileReport(data_input, title=title_input, minimal=minimal)
-    html_file_name = title_input + ".html"
-    profile.to_file(html_file_name)
-    del profile
-    del html_file_name
 
 
 # dataprep report show
