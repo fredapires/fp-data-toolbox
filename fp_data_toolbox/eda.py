@@ -1,10 +1,12 @@
 # TODO deprecate old / unused functions
+# TODO refactor simple functions into python language snippets instead
 
 
 # %% ---
 # Defining pandas df functions...
 # =============================================
 # Copy pandas df to clipboard
+# Try to not use this one anymore; use snippet instead
 def copi_df(data_input):
     import pandas as pd
     copi_df = pd.DataFrame(data_input)
@@ -21,13 +23,6 @@ def copi_colm(data_input):
     colm_df.to_clipboard(excel=True, index=False, header=False)
     del colm_list
     del colm_df
-
-
-# pandas df join by index
-def join_df_index(df1_left_input, df2_right_input, lft_suff='_left', rgt_suff='_right'):
-    joined_df = df1_left_input.join(
-        df2_right_input, lsuffix=lft_suff, rsuffix=rgt_suff)
-    return joined_df
 
 
 # TODO create function that merges and cleans output df
@@ -77,18 +72,6 @@ def corr_matrix(data_input, corr_cols_input):
 
 
 # %% ---
-# misc. pandas functions
-# =============================================
-# converting field to datetime data type
-def cast_as_datetime(df_input, colm_input):
-    import pandas as pd
-    df_input[colm_input] = pd.to_datetime(df_input[colm_input],
-                                          infer_datetime_format=True,
-                                          errors='coerce'
-                                          )
-
-
-# %% ---
 # Defining main automatic EDA functions
 # =============================================
 
@@ -97,7 +80,8 @@ def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
     from thefuzz import fuzz
     from thefuzz import process
     """
-    pretty inneficient
+    fuzzy searches records one by one
+        pretty inneficient for large datasets
     :param df_1: the left table to join
     :param df_2: the right table to join
     :param key1: key column of the left tabl
@@ -165,9 +149,8 @@ def pandas_profiling_custom(df, config_file, output_dir, title_input="",  calcul
     profile.to_widgets()
     return
 
+
 # =============================================
-
-
 def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
     from pandas_profiling import ProfileReport
     profile = ProfileReport(
@@ -281,22 +264,3 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
         }
     )
     return pm_rprt
-
-
-def dtale_analysis_show(df_input):
-    import dtale
-    test_dtale = dtale.show(df_input)
-    test_dtale.open_browser()
-    del test_dtale
-
-
-# Pivot table
-# def df_pivot_brwsr(df_input, output_file_name='pivottablejs'):
-#     import webbrowser
-#     from pivottablejs import pivot_ui
-#     file_name = output_file_name + '.html'
-#     df = df_input
-#     new_tab = 2  # open in a new tab, if possible
-#     pivot_ui(df, outfile_path=file_name)
-#     url = file_name
-#     webbrowser.open(url, new=new_tab)
