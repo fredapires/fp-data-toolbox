@@ -37,6 +37,10 @@
 ---
 
 <br>
+
+- DONE: change the show source control view keybing in VS code keybinds :2023-01-29
+    - make it much more accessible
+
 - DONE review simple python functions that should be snippets (due to simplicity):2023-01-29
 
 - DONE outline notes for the structure of a Python Data Personal "Toolbox" package
