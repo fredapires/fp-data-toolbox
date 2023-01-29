@@ -20,3 +20,34 @@ class TestExample:
     def test_assertion_error(self):
         with pytest.raises(AssertionError):
             assert 1 == 0
+
+    @pytest.fixture
+    def setup_data(self):
+        return [1, 2, 3, 4, 5]
+
+    def test_list_length(self, setup_data):
+        assert len(setup_data) == 5
+
+    def test_sum_of_list(self, setup_data):
+        assert sum(setup_data) == 15
+
+class TestSetup:
+    @classmethod
+    def setup_class(cls):
+        print("Setting up class")
+        cls.data = [1, 2, 3, 4, 5]
+
+    @classmethod
+    def teardown_class(cls):
+        print("Tearing down class")
+        del cls.data
+
+class TestTearDown:
+    def setup_method(self):
+        print("Setting up method")
+        self.data = [1, 2, 3, 4, 5]
+
+    def teardown_method(self):
+        print("Tearing down method")
+        del self.data
+
