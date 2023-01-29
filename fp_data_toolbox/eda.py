@@ -6,23 +6,23 @@
 # Defining pandas df functions...
 # =============================================
 # Copy pandas df to clipboard
-# Try to not use this one anymore; use snippet instead
-def copi_df(data_input):
-    import pandas as pd
-    copi_df = pd.DataFrame(data_input)
-    copi_df.to_clipboard(excel=True, index=False, header=True)
-    del copi_df
 
-
-# Copy pandas df columns to clipboard
 def copi_colm(data_input):
+    """
+    Copies columns of a Pandas DataFrame to the clipboard.
+
+    Parameters:
+    - data_input (pandas.DataFrame): The DataFrame whose columns should be copied.
+
+    Returns:
+    None
+    """
     import pandas as pd
     colm_list = list(data_input.columns)
-    colm_df = pd.DataFrame(data=colm_list)
-    colm_df[0] = colm_df[0].astype(str) + ','
-    colm_df.to_clipboard(excel=True, index=False, header=False)
-    del colm_list
-    del colm_df
+    colm_str = ','.join(colm_list)
+    pd.set_option('display.max_colwidth', -1)
+    colm_str_df = pd.DataFrame({'columns': [colm_str]})
+    colm_str_df.to_clipboard(excel=True, index=False, header=False)
 
 
 # TODO create function that merges and cleans output df
@@ -48,24 +48,26 @@ def df_merge_clean_func():
 # %% ---
 # Defining visualization functions...
 # =============================================
-
-# pandas df correlation matrix
 def corr_matrix(data_input, corr_cols_input):
+    """
+    Compute the correlation matrix of the specified columns in the input dataframe.
+    Parameters:
+        - data_input (pandas DataFrame): the dataframe containing the data to compute the correlation matrix from.
+        - corr_cols_input (list): a list of strings representing the columns to include in the correlation matrix.
+    Returns:
+        - pandas DataFrame: a dataframe containing the correlation matrix of the specified columns.
+    """
     import pandas as pd
     import numpy as np
     df_input = pd.DataFrame(data_input)
-    if isinstance(df_input, (pd.DatetimeIndex, pd.MultiIndex)):
+    if isinstance(df_input.index, (pd.DatetimeIndex, pd.MultiIndex)):
         # drop df index for calculation
-        df_input = df_input.to_frame(index=False)
-    df_input = df_input.reset_index().drop('index', axis=1, errors='ignore')
+        df_input = df_input.reset_index(drop=True)
     # update columns to strings in case they are numbers
     df_input.columns = [str(c) for c in df_input.columns]
     corr_df = df_input[corr_cols_input]
-    corr_df = np.corrcoef(corr_df.values, rowvar=False)
-    corr_df = pd.DataFrame(
-        corr_df, columns=[corr_cols_input], index=[corr_cols_input])
+    corr_df = corr_df.corr()
     corr_df.index.name = str('column')
-    corr_df = corr_df.reset_index()
     # corr_df = corr_df.style.background_gradient(axis=None, cmap='RdBu', vmin = -1, vmax = 1)
     del df_input
     return corr_df
@@ -75,36 +77,34 @@ def corr_matrix(data_input, corr_cols_input):
 # Defining main automatic EDA functions
 # =============================================
 
-# fuzzy matching logic
-def fuzzy_merge(df_1, df_2, key1, key2, threshold=90, limit=2):
-    from thefuzz import fuzz
-    from thefuzz import process
+def parallel_fuzzy_merge_df(left_df, right_df, left_key, right_key, threshold=0.9, limit=2):
     """
-    fuzzy searches records one by one
-        pretty inneficient for large datasets
-    :param df_1: the left table to join
-    :param df_2: the right table to join
-    :param key1: key column of the left tabl
-    :param key2: key column of the right table
-    :param threshold: how close the matches should be to return a match, based on Levenshtein distance
+    Fuzzy merge two dataframes using the optimized Jaro-Winkler Distance algorithm
+    :param left_df: the left dataframe to join
+    :param right_df: the right dataframe to join
+    :param left_key: key column of the left dataframe
+    :param right_key: key column of the right dataframe
+    :param threshold: minimum Jaro-Winkler distance for a match
     :param limit: the amount of matches that will get returned, these are sorted high to low
     :return: dataframe with boths keys and matches
     """
-    s = df_2[key2].tolist()
-
-    m = df_1[key1].apply(lambda x: process.extract(x, s, limit=limit))
-    df_1['matches'] = m
-
-    m2 = df_1['matches'].apply(lambda x: ', '.join(
-        [i[0] for i in x if i[1] >= threshold]))
-    df_1['matches'] = m2
-
-    return df_1
-
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from jaro_winkler import JaroWinkler
+    left_df = left_df.copy()
+    matches = []
+    jaro_winkler = JaroWinkler()
+    with ThreadPoolExecutor() as executor:
+        futures = {executor.submit(
+            find_matches, jaro_winkler, right_key, threshold, limit, s): s for s in left_df[left_key]}
+        for future in as_completed(futures):
+            matches.extend(future.result())
+    left_df["matches"] = matches
+    return left_df
 
 # =============================================
 # Pandas Data Profile Report functions
 # DONE Create function that autogenerates and saves pd_profile_report to output_path
+
 
 def pandas_profiling_custom(df, config_file, output_dir, title_input="",  calculate_corr_matrix_bool="false"):
     # pandas profiler df report - save custom config
