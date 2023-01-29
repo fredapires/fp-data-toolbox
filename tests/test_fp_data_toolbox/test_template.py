@@ -2,6 +2,7 @@
 
 import pytest
 import pandas as pd
+from faker import Faker
 
 class TestPandasDataFrame:
     def test_dataframe_creation(self):
@@ -55,5 +56,26 @@ class TestPandasTearDown:
     def teardown_method(self):
         print("Tearing down method")
         del self.df
+
+#-------------
+
+fake = Faker()
+
+def generate_testing_data(n_rows):
+    data = []
+    for i in range(n_rows):
+        data.append(
+            {
+                "name": fake.name(),
+                "email": fake.email(),
+                "address": fake.address(),
+                "phone_number": fake.phone_number(),
+                "date_time": fake.date_time(),
+                "job": fake.job(),
+                "text": fake.text(),
+            }
+        )
+    df = pd.DataFrame(data)
+    return df
 
 
