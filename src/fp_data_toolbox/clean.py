@@ -114,3 +114,36 @@ def normalize_datetime(df, datetime_col):
     df[datetime_col] = pd.to_datetime(
         df[datetime_col], errors='coerce', format='%Y-%m-%d %H:%M:%S')
     return df
+
+
+def cleanup_distinctness(df, groupby_col, operation, join_col='id', join_type='inner'):
+    """
+    Clean up unnecessary distinctness within a dataframe.
+
+    Parameters:
+    df (pandas.DataFrame): The input dataframe
+    groupby_col (str): The column to group by
+    operation (str): The operation to perform for each group (min or max)
+    join_col (str): The column to use as the join key
+    join_type (str): The type of join to perform (inner or outer)
+
+    Returns:
+    pandas.DataFrame: The cleaned-up dataframe
+    """
+    # Group the dataframe by the specified column and get the specified operation for each group
+    df_stg = df.groupby(groupby_col, as_index=False).agg(operation)
+
+    # Rename the column specified by `operation`
+    df_stg.rename(
+        columns={operation: f'{operation}_{groupby_col}'}, inplace=True)
+
+    # Merge the original dataframe with the grouped dataframe on the specified join column
+    df = df.merge(df_stg, on=join_col, how=join_type)
+
+    # Drop the original column specified by `operation`
+    df.drop([operation], axis=1, inplace=True)
+
+    # Rename the cleaned-up column back to its original name
+    df.rename(columns={f'{operation}_{groupby_col}': operation}, inplace=True)
+
+    return df

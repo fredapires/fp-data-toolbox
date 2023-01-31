@@ -11,8 +11,6 @@
 - TODO: continue to add cleaning functions to [clean.py](fp_data_toolbox/clean.py) :2022-10-11
     - from `mtg-etl`
 
-- TODO review simple python functions that should be snippets (due to simplicity)
-
 - TODO review how to setup virtual environments for projects: 2022-10-10
     - setup virtual environment (/venv in all projects) and automated script for rebuilding venv
     - See [dev_env_setup.bat](scripts/batch/dev_env_setup.bat), [venv](venv/)
@@ -39,6 +37,11 @@
 ---
 
 <br>
+
+- DONE: change the show source control view keybing in VS code keybinds :2023-01-29
+    - make it much more accessible
+
+- DONE review simple python functions that should be snippets (due to simplicity):2023-01-29
 
 - DONE outline notes for the structure of a Python Data Personal "Toolbox" package
 - DONE package/repo itself has the following goals:
