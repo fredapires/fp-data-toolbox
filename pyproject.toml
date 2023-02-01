@@ -9,22 +9,19 @@ packages = [{include = "fp_data_toolbox"}]
 
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 pytest = "*"
 faker = "*"
-numpy = "*"
+numpy = "1.23"
 pandas = "*"
-pandas_profiling = "*"
+missingno = "*"
+dataprep = "*"
 matplotlib = "*"
 seaborn = "*"
-dataprep = "*"
+pandas-profiling = "*"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
-[tool.poetry.include]
-
-
-[tool.poetry.exclude]
