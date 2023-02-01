@@ -11,7 +11,7 @@ matplotlib = "*"
 seaborn = "*"
 dataprep = "*"
 pipenv = "*"
-
+ 
 
 [dev-packages]
 pytest = "*"
