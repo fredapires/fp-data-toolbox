@@ -8,8 +8,10 @@ readme = "README.md"
 packages = [{include = "fp_data_toolbox"}]
 
 
+
 [tool.poetry.dependencies]
 python = "^3.8"
+build = "*"
 pytest = "*"
 faker = "*"
 numpy = "1.23"
@@ -19,6 +21,8 @@ dataprep = "*"
 matplotlib = "*"
 seaborn = "*"
 pandas-profiling = "*"
+
+
 
 [build-system]
 requires = ["poetry-core"]
