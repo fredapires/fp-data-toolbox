@@ -8,6 +8,8 @@
 
 ---
 
+- TODO: figure out how to publish our builds.. :2023-02-07
+
 - TODO: continue to add cleaning functions to [clean.py](fp_data_toolbox/clean.py) :2022-10-11
     - from `mtg-etl`
 
