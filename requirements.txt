@@ -1,7 +1,0 @@
-pytest
-faker
-numpy
-pandas
-pandas_profiling
-matplotlib
-seaborn
