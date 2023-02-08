@@ -1,17 +1,10 @@
 [metadata]
 name = "fp-data-toolbox"
-version = "0.1.19"
+version = "0.1.20"
 description = "personal toolbox for data science"
 author = "Fred Pires"
 author_email = "fredapires@gmail.com"
 long_description = "file: README.md"
-license = "MIT"
-
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
 
 [build-system]
 requires = [
