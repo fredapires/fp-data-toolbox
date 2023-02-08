@@ -1,31 +1,22 @@
-[tool.poetry]
+[metadata]
 name = "fp-data-toolbox"
 version = "0.1.19"
 description = "personal toolbox for data science"
-authors = ["fredapires <fredapires@gmail.com>"]
+author = "Fred Pires"
+author_email = "fredapires@gmail.com"
+long_description = "file: README.md"
 license = "MIT"
-readme = "README.md"
-packages = [{include = "fp_data_toolbox"}]
 
-
-
-[tool.poetry.dependencies]
-python = "^3.8"
-build = "*"
-pytest = "*"
-faker = "*"
-numpy = "1.23"
-pandas = "*"
-missingno = "*"
-dataprep = "*"
-matplotlib = "*"
-seaborn = "*"
-pandas-profiling = "*"
-
-
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
-
+requires = [
+    "pipenv", 
+    "setuptools", 
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
