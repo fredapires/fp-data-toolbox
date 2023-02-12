@@ -149,25 +149,4 @@ def cleanup_distinctness(df, groupby_col, operation, join_col='id', join_type='i
 
     return df
 
-
-
-def extract_date_from_string(input_string: str, date_format: str = '%Y-%m-%d') -> str:
-    """
-    Extracts a date string from an input string using a regular expression.
-    
-    The input string must contain a date in the format `YYYY-MM-DD`. By default, the date format of the extracted
-    string is `%Y-%m-%d`, but it can be changed using the `date_format` argument.
-    
-    Args:
-    - input_string (str): The input string from which to extract the date.
-    - date_format (str, optional): The desired format of the extracted date string. Default is `%Y-%m-%d`.
-    
-    Returns:
-    - str: The extracted date string, or `None` if the input string does not contain a date.
-    """
-    date_regex = r'\d{4}-\d{2}-\d{2}'
-    date_match = re.search(date_regex, input_string)
-    if date_match:
-        date_string = date_match.group()
-        return date_string
-    return None
+# %%
