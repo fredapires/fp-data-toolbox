@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='fp-data-toolbox',
-    version='0.1.24',
+    version='0.1.25',
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='personal toolbox for data science',

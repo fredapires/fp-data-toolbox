@@ -2,9 +2,15 @@
 # =============================================
 
 
+# %% imports
+import re
+
+# %%
 # DONE function that loops over a list ;noted_on:2022-10-10
 #   includes progress bar
 #   outputs list that then needs to be joined back into original df
+
+
 def loop_over_list(index_list):
     output_list = []  # setup output list
     i = 0  # setup variable for looping progress bar
@@ -38,7 +44,6 @@ def extract_date_from_string(input_string: str, date_format: str = '%Y-%m-%d') -
     Returns:
     - str: The extracted date string, or `None` if the input string does not contain a date.
     """
-    import re
     date_regex = r'\d{4}-\d{2}-\d{2}'
     date_match = re.search(date_regex, input_string)
     if date_match:
