@@ -38,6 +38,7 @@ def extract_date_from_string(input_string: str, date_format: str = '%Y-%m-%d') -
     Returns:
     - str: The extracted date string, or `None` if the input string does not contain a date.
     """
+    import re
     date_regex = r'\d{4}-\d{2}-\d{2}'
     date_match = re.search(date_regex, input_string)
     if date_match:
