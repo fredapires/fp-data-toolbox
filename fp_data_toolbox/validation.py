@@ -4,7 +4,7 @@ import re
 import datetime
 import numpy as np
 
-# value validation functions
+# %% value validation functions
 
 
 def is_valid_email(email):
@@ -42,7 +42,7 @@ def is_valid_date(date):
         return False
 
 
-# pandas validation functions
+# %% pandas validation functions
 
 
 def check_null_values(df):
@@ -157,3 +157,16 @@ def check_numerical_range(df, columns, min_value=None, max_value=None):
         elif max_value is not None:
             range_cols[col] = (df[col] <= max_value).sum()
     return range_cols
+
+
+def test_df_equals(df1, df2):
+    pd.testing.assert_frame_equal(
+        df1, df2,
+        check_exact=False,
+        check_like=True,
+        atol=1
+    )
+
+
+# %% 
+

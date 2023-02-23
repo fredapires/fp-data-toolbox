@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='fp-data-toolbox',
-    version='0.1.27',
+    version='0.1.28',
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='personal toolbox for data science',
@@ -14,17 +14,20 @@ setup(
     url='https://github.com/fredapires/fp_data_toolbox',
     packages=find_packages(),
     install_requires=[
-        'pandas',
         'build',
+        'pandas',
         'numpy',
         'matplotlib',
         'seaborn',
         'missingno',
         'pandas-profiling',
+        'ydata-profiling',
         'dataprep',
         'jupyter-helpers',
         'win10toast',
         'pyarrow',
+        'pyodbc',
+        'pyautogui',
         'faker',
         'pytest'
     ],
