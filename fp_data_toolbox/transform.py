@@ -12,6 +12,23 @@ import re
 
 
 def loop_over_list(index_list):
+    """
+    Loop over a list and perform a calculation on each item, returning a new list with the results.
+
+    Args:
+        index_list (list): The list of items to loop over.
+
+    Returns:
+        list: A new list with the calculated results.
+
+    Raises:
+        None.
+
+    Example:
+        >>> loop_over_list([1, 2, 3, 4])
+        [new_value_1, new_value_2, new_value_3, new_value_4]
+
+    """
     output_list = []  # setup output list
     i = 0  # setup variable for looping progress bar
     for id in index_list:
