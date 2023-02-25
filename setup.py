@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='fp-data-toolbox',
-    version='0.1.29',
+    version='0.1.30',
     author='Fred Pires',
     author_email='fredapires@gmail.com',
     description='personal toolbox for data science',
@@ -26,6 +26,7 @@ setup(
         'jupyter-helpers',
         'win10toast',
         'jaro_winkler',
+        'openpyxl',
         'pyarrow',
         'pyodbc',
         'pyautogui',
