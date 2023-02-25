@@ -1,5 +1,8 @@
 # TODO deprecate old / unused functions
 # TODO refactor simple functions into python language snippets instead
+# TODO: refactor pandas_profiling into ydata_profiling :noted_on:2023-02-25
+#           pandas_profiling will be deprecated in April 2023
+# TODO: add any new functions from professional version to this one :noted_on:2023-02-25
 
 
 # %% ---

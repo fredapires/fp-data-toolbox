@@ -34,7 +34,7 @@ coverage.xml
 *.cover
 
 # virtual environment
-.venv/*
+.venv/
 Pipfile.lock
 *.lock
 

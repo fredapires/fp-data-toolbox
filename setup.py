@@ -25,6 +25,7 @@ setup(
         'dataprep',
         'jupyter-helpers',
         'win10toast',
+        'jaro_winkler',
         'pyarrow',
         'pyodbc',
         'pyautogui',

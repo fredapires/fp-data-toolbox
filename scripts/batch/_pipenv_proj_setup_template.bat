@@ -17,9 +17,8 @@ if not exist "%directory_venv%" (
 cd "%directory%"
 
 @REM setup pipenv in global interpreter, for installation
-
 @REM install dependencies into the .venv directory
-pipenv install git+https://github.com/fredapires/fp_data_toolbox#egg=fp_data_toolbox
+@REM pipenv install git+https://github.com/fredapires/fp_data_toolbox#egg=fp_data_toolbox
 @REM pipenv install git+https://github.com/fredapires/fp_data_toolbox#egg=fp_data_toolbox
 
 @REM activate venv

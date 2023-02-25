@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2591ce67a374af48dd0583dfbad0f150b9b7e1dcf69adfe3b3ffe1062f005f7b"
+            "sha256": "3e3737a697981d63a25be037a26026f7c935d12145a133be81230e71ebba3551"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -617,7 +617,7 @@
         },
         "fp-data-toolbox": {
             "git": "https://github.com/fredapires/fp_data_toolbox",
-            "ref": "eab2b591018006f8babfe10a4883cff81927e1a9"
+            "ref": "dc988138f94e734e8f0e16630c623e3e7d0c56c5"
         },
         "fqdn": {
             "hashes": [
@@ -787,6 +787,13 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==2.1.2"
+        },
+        "jaro-winkler": {
+            "hashes": [
+                "sha256:9ad42a94eb110351e72dd5b9e0a0f1053b0760761d676f9be35da19ea80d511b"
+            ],
+            "index": "pypi",
+            "version": "==2.0.3"
         },
         "jedi": {
             "hashes": [
