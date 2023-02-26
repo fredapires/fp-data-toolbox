@@ -278,6 +278,7 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
     )
     return pm_rprt
 
+
 # %%
 # excel data sheet to data profilers function
 
@@ -319,9 +320,26 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
         profile = ProfileReport(df, minimal=True)
 
         # save to excel_parent_directory
-        profile.to_file(excel_parent_directory+'\\ydata_profiling_report.html')
+        profile.to_file(excel_parent_directory+'\\' +
+                        sheet_name+'-'+'ydata_report.html')
+
         print('')
         print('Done building ydata_profiling report to ' +
               excel_parent_directory + '  '+'Thanks!')
+    if data_profile_type == 'dataprep':
+        print('Starting dataprep report. May take a few minutes...')
+        print('')
+        from dataprep.eda import plot, plot_correlation, plot_missing
+        from dataprep.eda import create_report
+        report = create_report(df)
+        report  # show report in notebook
+        # save report to local disk
+        report.save(excel_parent_directory+'\\' +
+                    sheet_name+'-'+'dataprep_report.html')
+        report.show_browser()  # show report in the browser
+
+        print('')
+        print('Done building dataprep report to ' +
+              excel_parent_directory + '  '+'Thanks!')
     else:
-        print('data_profile_type input invalid')
+        print('Done building all data profiling reports')
