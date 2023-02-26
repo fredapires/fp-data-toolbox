@@ -282,7 +282,7 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
 # excel data sheet to data profilers function
 
 
-def xl_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
+def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
     # xl_path = sys.argv[1]       # passed in from batch
     # xl_sheet_name = sys.argv[2] # passed in from batch
 
@@ -303,4 +303,6 @@ def xl_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
     # save to excel_parent_directory
     # profile.to_file(excel_parent_directory+'ydata_profiling_report.html')
 
-    print(excel_parent_directory+'ydata_profiling_report.html')
+    df.info()
+
+    # print(excel_parent_directory+'ydata_profiling_report.html')

@@ -17,10 +17,9 @@
         - [ ] test
     - [ ] simple python script orchestrating the following:
         - [ ] develop
-            - [ ] takes in sys.args from .bat script
-            - [ ] cd to project folder
-            - [ ] load data from excel sheet using passed in variables
-            - [ ] load data into pandas df
+            - [x] takes in sys.args from .bat script
+            - [x] load data from excel sheet using passed in variables
+            - [x] load data into pandas df
             - [ ] cleaning / prep operations
             - [ ] use data to generate ydata_profiling report
                 - in same directory as excel file
