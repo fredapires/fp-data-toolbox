@@ -4,6 +4,16 @@
 
 <br>
 
+- DONE: figure out how to publish our builds.. :2023-02-07
+
+- DONE review how to setup virtual environments for projects: 2022-10-10
+    - setup virtual environment (/venv in all projects) and automated script for rebuilding venv
+    - See [dev_env_setup.bat](scripts/batch/dev_env_setup.bat), [venv](venv/)
+    - [x] `fp_data_toolbox`
+    - [x] `mtg-proj`
+    - [x] `music-prod`
+    - [x] `personal-proj`
+
 - DONE: successfully setup pipenv within this project
 
 - DONE: change the show source control view keybing in VS code keybinds :2023-01-29
