@@ -8,15 +8,6 @@ import fp_data_toolbox as fpdt
 from fp_data_toolbox import eda
 from fp_data_toolbox import file_handling
 
-# %%
-excel_path_input = sys.argv[1]
-sheet_name_input = sys.argv[2]
-# excel_path_input = 'C:\\temp\\test_data_wkbk.xlsm'
-# sheet_name_input = 'TEST DATA'
-# Converting "ON","OFF" strings to boolean
-toggle_ydata = sys.argv[3] == 'ON'
-toggle_dataprep = sys.argv[4] == 'ON'
-toggle_missingno = sys.argv[5] == 'ON'
 
 # %% define functions
 
@@ -87,11 +78,11 @@ def excel_to_eda_tools(
     print('')
 
     # various profiling report output types here
-    # [ ] ydata_profiling
+    # [x] ydata_profiling
     # [ ] with config
     # [x] minimal
-    # [ ] missingno matrix
-    # [ ] dataprep
+    # [x] missingno matrix
+    # [x] dataprep
 
     print('Starting to build data profiling reports.')
     print('')
@@ -163,6 +154,19 @@ def excel_to_eda_tools(
 
     print('Done building all data profiling reports')
 
+
+# ---------------------------------
+# ---------------------------------
+# ---------------------------------
+# %%
+excel_path_input = sys.argv[1]
+sheet_name_input = sys.argv[2]
+# excel_path_input = 'C:\\temp\\test_data_wkbk.xlsm'
+# sheet_name_input = 'TEST DATA'
+# Converting "ON","OFF" strings to boolean
+toggle_ydata = sys.argv[3] == 'ON'
+toggle_dataprep = sys.argv[4] == 'ON'
+toggle_missingno = sys.argv[5] == 'ON'
 
 # %%
 # eda.excel_to_eda_tools(
