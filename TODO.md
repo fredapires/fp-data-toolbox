@@ -3,6 +3,7 @@
 ---
 
 <br>
+
 - TODO: Excel data sheet -> ydata report :2023-02-25
     - build and test out end 2 end process
     - [ ] python function for opening sheet and loading to df
@@ -11,20 +12,24 @@
         - [ ] test
     - [ ] python function for setting up ydata_config.yaml
         - based on professional version. should work the same
-        - [ ] some small changes to default config
-        - [x] develop
+        - [ ] develop
+            - [ ] some small changes to default config
         - [ ] test
     - [ ] simple python script orchestrating the following:
-        - [ ] takes in sys.args from .bat script
-        - [ ] cd to project folder
-        - [ ]
-        - [ ] pull data from excel workbook/sheet -> pandas df
-        - [ ]
-        - [ ]
-        - [x] develop
+        - [ ] develop
+            - [ ] takes in sys.args from .bat script
+            - [ ] cd to project folder
+            - [ ] load data from excel sheet using passed in variables
+            - [ ] load data into pandas df
+            - [ ] cleaning / prep operations
+            - [ ] use data to generate ydata_profiling report
+                - in same directory as excel file
         - [ ] test
-    - [ ] VBA script for kicking off python
-    - [ ]
+    - [ ] VBA script for:
+        - [ ] develop
+            - [ ] passing variables to batch
+            - [ ] kicking off python
+        - [ ] test
 
 ### **In Progress...**
 

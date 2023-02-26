@@ -4,6 +4,18 @@
 #           pandas_profiling will be deprecated in April 2023
 # TODO: add any new functions from professional version to this one :noted_on:2023-02-25
 
+# %%
+# imports
+import sys
+import os
+from datetime import date
+import pandas as pd
+import numpy as np
+
+# personal projects
+# import fp_data_toolbox as fpdt
+from fp_data_toolbox import file_handling
+
 
 # %% ---
 # Defining pandas df functions...
@@ -20,7 +32,6 @@ def copi_colm(data_input):
     Returns:
     None
     """
-    import pandas as pd
     colm_list = list(data_input.columns)
     colm_str = ','.join(colm_list)
     pd.set_option('display.max_colwidth', -1)
@@ -60,8 +71,6 @@ def corr_matrix(data_input, corr_cols_input):
     Returns:
         - pandas DataFrame: a dataframe containing the correlation matrix of the specified columns.
     """
-    import pandas as pd
-    import numpy as np
     df_input = pd.DataFrame(data_input)
     if isinstance(df_input.index, (pd.DatetimeIndex, pd.MultiIndex)):
         # drop df index for calculation
@@ -104,15 +113,13 @@ def parallel_fuzzy_merge_df(left_df, right_df, left_key, right_key, threshold=0.
     left_df["matches"] = matches
     return left_df
 
-# =============================================
-# Pandas Data Profile Report functions
+# %%
+# # Pandas Data Profile Report functions
 # DONE Create function that autogenerates and saves pd_profile_report to output_path
 
 
 def pandas_profiling_custom(df, config_file, output_dir, title_input="",  calculate_corr_matrix_bool="false"):
     # pandas profiler df report - save custom config
-    from datetime import date
-    import pandas as pd
     from pandas_profiling import ProfileReport
 
     # variable setup
@@ -204,8 +211,11 @@ def pandas_profiling_min_nb_frame(df, title_input="Pandas Profiling Report"):
     )
     profile.to_notebook_iframe()
 
+# %%
 
 # dataprep report show
+
+
 def dataprep_rprt_show(df_input):
     from dataprep.eda import create_report
     dataprep_rprt = create_report(df_input)
@@ -267,3 +277,30 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
         }
     )
     return pm_rprt
+
+# %%
+# excel data sheet to data profilers function
+
+
+def xl_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
+    # xl_path = sys.argv[1]       # passed in from batch
+    # xl_sheet_name = sys.argv[2] # passed in from batch
+
+    excel_parent_directory = os.path.dirname(excel_path)
+
+    df = pd.DataFrame()
+    df = file_handling.read_excel_to_dataframe(
+        workbook_path=excel_path,
+        sheet_name=sheet_name,
+    )
+
+    # general data cleaning/prep operations here
+
+    # TODO: insert data profiling report executions here
+    from ydata_profiling import ProfileReport
+    profile = ProfileReport(df, minimal=True)
+
+    # save to excel_parent_directory
+    # profile.to_file(excel_parent_directory+'ydata_profiling_report.html')
+
+    print(excel_parent_directory+'ydata_profiling_report.html')
