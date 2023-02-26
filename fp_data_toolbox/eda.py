@@ -283,8 +283,6 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
 
 
 def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
-    # xl_path = sys.argv[1]       # passed in from batch
-    # xl_sheet_name = sys.argv[2] # passed in from batch
 
     excel_parent_directory = os.path.dirname(excel_path)
 
@@ -296,13 +294,17 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
 
     # general data cleaning/prep operations here
 
-    # TODO: insert data profiling report executions here
-    from ydata_profiling import ProfileReport
-    profile = ProfileReport(df, minimal=True)
+    # various profiling report output types here
+    # [ ] ydata_profiling
+    # [ ] with config
+    # [x] minimal
+    # [ ] missingno matrix
+    # [ ] dataprep
+    if data_profile_type == 'ydata':
+        from ydata_profiling import ProfileReport
+        profile = ProfileReport(df, minimal=True)
 
-    # save to excel_parent_directory
-    # profile.to_file(excel_parent_directory+'ydata_profiling_report.html')
-
-    # df.info()
-
-    print(excel_parent_directory+'ydata_profiling_report.html')
+        # save to excel_parent_directory
+        profile.to_file(excel_parent_directory+'\\ydata_profiling_report.html')
+    else:
+        print('data_profile_type input invalid')
