@@ -303,6 +303,6 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
     # save to excel_parent_directory
     # profile.to_file(excel_parent_directory+'ydata_profiling_report.html')
 
-    df.info()
+    # df.info()
 
-    # print(excel_parent_directory+'ydata_profiling_report.html')
+    print(excel_parent_directory+'ydata_profiling_report.html')

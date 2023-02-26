@@ -7,12 +7,12 @@ from fp_data_toolbox import eda
 
 # %%
 
-# excel_path_input = sys.argv[1]
-# sheet_name_input = sys.argv[2]
+excel_path_input = sys.argv[1]
+sheet_name_input = sys.argv[2]
 
 # %%
-excel_path_input = 'C:\\temp\\test_data_wkbk.xlsx'
-sheet_name_input = 'TEST DATA'
+# excel_path_input = 'C:\\temp\\test_data_wkbk.xlsm'
+# sheet_name_input = 'TEST DATA'
 
 eda.excel_to_eda_tools(
     excel_path=excel_path_input,

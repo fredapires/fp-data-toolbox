@@ -6,10 +6,10 @@
 
 - TODO: Excel data sheet -> ydata report :2023-02-25
     - build and test out end 2 end process
-    - [ ] python function for opening sheet and loading to df
+    - [x] python function for opening sheet and loading to df
         - must take in workbook path and sheet names as variables
         - [x] develop
-        - [ ] test
+        - [x] test
     - [ ] python function for setting up ydata_config.yaml
         - based on professional version. should work the same
         - [ ] develop
@@ -24,10 +24,10 @@
             - [ ] use data to generate ydata_profiling report
                 - in same directory as excel file
         - [ ] test
-    - [ ] VBA script for:
-        - [ ] develop
-            - [ ] passing variables to batch
-            - [ ] kicking off python
+    - [x] VBA script for:
+        - [x] develop
+            - [x] passing variables to batch
+            - [x] kicking off python
         - [ ] test
 
 ### **In Progress...**
