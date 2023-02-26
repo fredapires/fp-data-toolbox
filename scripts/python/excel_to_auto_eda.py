@@ -8,10 +8,26 @@ import fp_data_toolbox as fpdt
 from fp_data_toolbox import eda
 from fp_data_toolbox import file_handling
 
+# %%
+excel_path_input = sys.argv[1]
+sheet_name_input = sys.argv[2]
+# excel_path_input = 'C:\\temp\\test_data_wkbk.xlsm'
+# sheet_name_input = 'TEST DATA'
+# Converting "ON","OFF" strings to boolean
+ydata_toggle = sys.argv[3] == 'ON'
+dataprep_toggle = sys.argv[4] == 'ON'
+missingno_toggle = sys.argv[5] == 'ON'
 
 # %% define functions
 
-def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
+
+def excel_to_eda_tools(
+    excel_path,
+    sheet_name,
+    ydata_toggle=True,
+    dataprep_toggle=True,
+    missingno_toggle=True,
+):
 
     excel_parent_directory = os.path.dirname(excel_path)
 
@@ -41,7 +57,7 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
     print('Starting to build data profiling reports.')
     print('')
 
-    if data_profile_type == 'ydata':
+    if ydata_toggle == True:
         print('Starting ydata_profiling report. May take a few minutes...')
         print('')
         from ydata_profiling import ProfileReport
@@ -54,7 +70,7 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
         print('')
         print('Done building ydata_profiling report to ' +
               excel_parent_directory + '  '+'Thanks!')
-    if data_profile_type == 'dataprep':
+    elif dataprep_toggle == True:
         print('Starting dataprep report. May take a few minutes...')
         print('')
         from dataprep.eda import plot, plot_correlation, plot_missing
@@ -69,23 +85,24 @@ def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
         print('')
         print('Done building dataprep report to ' +
               excel_parent_directory + '  '+'Thanks!')
+    elif missingno_toggle == True:
+        print('Starting missingno report. May take a few minutes...')
+        print('')
+        print('')
+        print('Done building missingno report to ' +
+              excel_parent_directory + '  '+'Thanks!')
     else:
         print('Done building all data profiling reports')
 
-
-# %%
-excel_path_input = sys.argv[1]
-sheet_name_input = sys.argv[2]
-data_profile_type_input = sys.argv[3]
-# excel_path_input = 'C:\\temp\\test_data_wkbk.xlsm'
-# sheet_name_input = 'TEST DATA'
 
 # %%
 # eda.excel_to_eda_tools(
 excel_to_eda_tools(
     excel_path=excel_path_input,
     sheet_name=sheet_name_input,
-    data_profile_type=data_profile_type_input,
+    ydata_toggle=ydata_toggle,
+    dataprep_toggle=dataprep_toggle,
+    missingno_toggle=missingno_toggle,
 )
 
 # %%
