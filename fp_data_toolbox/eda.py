@@ -400,10 +400,12 @@ def excel_auto_eda_run(
 
         # TODO: fill out this section :noted_on:2023-02-26
         # [ ] test
+        
+        general_report_out_path=tgt_directory+'\\'+sheet_name+'-general-report.xlsx'
         df_info_to_excel(
             df=df,
-            filepath=excel_path,
-            sheet_name=sheet_name+'-eda_info'
+            filepath=general_report_out_path,
+            sheet_name=sheet_name+'-eda_info',
         )
 
         print('')
