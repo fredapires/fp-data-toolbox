@@ -292,18 +292,6 @@ def msno_eda_save_pngs(
 ):
     import missingno as msno
 
-    # creating target directory + saving variable
-    # tgt_msno_directory = tgt_directory+'\\'+'msno_report-'+df_name
-    # if os.path.exists(tgt_msno_directory):
-    #     print(f"Directory {tgt_msno_directory} already exists.")
-    # else:
-    #     try:
-    #         os.makedirs(tgt_msno_directory)
-    #         print(f"Directory {tgt_msno_directory} created.")
-    #     except OSError as e:
-    #         raise OSError(
-    #             f"Error creating directory {tgt_msno_directory}: {str(e)}")
-
     # saving matrix figures
     fig_matrix = msno.matrix(df)
     fig_matrix = fig_matrix.get_figure()
@@ -327,6 +315,7 @@ def msno_eda_save_pngs(
 def excel_auto_eda_run(
     excel_path,
     sheet_name,
+    toggle_general=True,
     toggle_ydata=True,
     toggle_dataprep=True,
     toggle_missingno=True,
@@ -357,7 +346,12 @@ def excel_auto_eda_run(
     # [x] missingno matrix
     # [x] dataprep
 
+    print('###==========================================================================================')
+    print('###==========================================================================================')
     print('Starting to build data profiling reports.')
+    print('###==========================================================================================')
+    print('###==========================================================================================')
+    print('')
     print('')
 
     # creating target directory + saving variable
@@ -372,9 +366,20 @@ def excel_auto_eda_run(
             raise OSError(
                 f"Error creating directory {tgt_directory}: {str(e)}")
 
+    if toggle_general == True:
+        print('###==========================================================================================')
+        print('Starting general data profiling report. May take a few seconds...')
+        print('###==========================================================================================')
+        print('')
+
+        print('')
+        print('Done building general data profiling report to ' +
+              tgt_directory + '  '+'Thanks!')
+        print('')
     if toggle_ydata == True:
-        print('###---------------------------------')
+        print('###==========================================================================================')
         print('Starting ydata_profiling report. May take a few minutes...')
+        print('###==========================================================================================')
         print('')
         from ydata_profiling import ProfileReport
         profile = ProfileReport(df, minimal=True)
@@ -388,8 +393,9 @@ def excel_auto_eda_run(
               tgt_directory + '  '+'Thanks!')
         print('')
     if toggle_dataprep == True:
-        print('###---------------------------------')
+        print('###==========================================================================================')
         print('Starting dataprep report. May take a few minutes...')
+        print('###==========================================================================================')
         print('')
 
         from dataprep.eda import plot, plot_correlation, plot_missing
@@ -406,14 +412,14 @@ def excel_auto_eda_run(
               tgt_directory + '  '+'Thanks!')
         print('')
     if toggle_missingno == True:
-        print('###---------------------------------')
+        print('###==========================================================================================')
         print('Starting missingno report. May take a few minutes...')
+        print('###==========================================================================================')
         print('')
-        import missingno as msno
-        # TODO: fill out this section :noted_on:2023-02-26
-        #   [ ] generate missingno report / visualization
-        #   [ ] save in excel_parent_directory
 
+        # DONE: fill out this section :noted_on:2023-02-26
+        #   [x] generate missingno report / visualization
+        #   [x] save in excel_parent_directory
         msno_eda_save_pngs(
             df,
             tgt_directory=tgt_directory,
