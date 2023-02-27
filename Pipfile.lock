@@ -625,7 +625,7 @@
         },
         "fp-data-toolbox": {
             "git": "https://github.com/fredapires/fp_data_toolbox",
-            "ref": "0db4497fd38086939aeb4395e50ee3f05f47096e"
+            "ref": "b1c0cf799c95ed26e66f19fd036e34576c559bb9"
         },
         "fqdn": {
             "hashes": [

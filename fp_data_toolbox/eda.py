@@ -310,7 +310,31 @@ def msno_eda_save_pngs(
 
 
 # %%
+
+
+def df_info_to_excel(
+    df,
+    filepath,
+    sheet_name='Sheet1'
+):
+    """Write the output of DataFrame.info() to a new Excel file.
+
+    Args:
+        df (pandas.DataFrame): The dataframe to extract information from.
+        filename (str): The name of the output file.
+        sheet_name (str, optional): The name of the worksheet to write to. Default is 'Sheet1'.
+
+    Returns:
+        None
+    """
+    writer = pd.ExcelWriter(filepath)
+    df.info(verbose=True, buf=writer, show_counts=True)
+    writer.sheets[sheet_name].set_column('A:A', 30)
+    writer.save()
+
+# %%
 # excel data sheet to data profilers function
+
 
 def excel_auto_eda_run(
     excel_path,
@@ -346,6 +370,7 @@ def excel_auto_eda_run(
     # [x] missingno matrix
     # [x] dataprep
 
+    print('')
     print('###==========================================================================================')
     print('###==========================================================================================')
     print('Starting to build data profiling reports.')
@@ -367,16 +392,26 @@ def excel_auto_eda_run(
                 f"Error creating directory {tgt_directory}: {str(e)}")
 
     if toggle_general == True:
+        print('')
         print('###==========================================================================================')
         print('Starting general data profiling report. May take a few seconds...')
         print('###==========================================================================================')
         print('')
+
+        # TODO: fill out this section :noted_on:2023-02-26
+        # [ ] test
+        df_info_to_excel(
+            df=df,
+            filepath=excel_path,
+            sheet_name=sheet_name+'-eda_info'
+        )
 
         print('')
         print('Done building general data profiling report to ' +
               tgt_directory + '  '+'Thanks!')
         print('')
     if toggle_ydata == True:
+        print('')
         print('###==========================================================================================')
         print('Starting ydata_profiling report. May take a few minutes...')
         print('###==========================================================================================')
@@ -393,6 +428,7 @@ def excel_auto_eda_run(
               tgt_directory + '  '+'Thanks!')
         print('')
     if toggle_dataprep == True:
+        print('')
         print('###==========================================================================================')
         print('Starting dataprep report. May take a few minutes...')
         print('###==========================================================================================')
@@ -412,6 +448,7 @@ def excel_auto_eda_run(
               tgt_directory + '  '+'Thanks!')
         print('')
     if toggle_missingno == True:
+        print('')
         print('###==========================================================================================')
         print('Starting missingno report. May take a few minutes...')
         print('###==========================================================================================')
