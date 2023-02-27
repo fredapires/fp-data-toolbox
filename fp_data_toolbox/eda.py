@@ -325,7 +325,7 @@ def msno_eda_save_pngs(
 # excel data sheet to data profilers function
 
 
-def excel_to_eda_tools(excel_path, sheet_name, data_profile_type='ydata'):
+def excel_auto_eda_run(excel_path, sheet_name, data_profile_type='ydata'):
 
     excel_parent_directory = os.path.dirname(excel_path)
 
