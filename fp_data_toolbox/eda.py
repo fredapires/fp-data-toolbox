@@ -403,11 +403,12 @@ def excel_auto_eda_run(
         # [ ] test
 
         general_report_out_path = tgt_directory+'\\'+sheet_name+'-general-report.xlsx'
-        df_info_to_excel(
-            df=df,
-            filepath=general_report_out_path,
-            sheet_name=sheet_name+'-eda_info',
-        )
+        # TODO: below function has errors, fix later :noted_on:2023-02-27
+        # df_info_to_excel(
+        #     df=df,
+        #     filepath=general_report_out_path,
+        #     sheet_name=sheet_name+'-eda_info',
+        # )
 
         print('')
         print('Done building general data profiling report to ' +
