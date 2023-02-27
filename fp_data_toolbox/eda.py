@@ -278,6 +278,48 @@ def pm_rprt_func(data_input, time_axis_colm, features_input, time_width_input="1
     )
     return pm_rprt
 
+# ---------------------------------
+# %%
+
+
+# %%
+
+
+def msno_eda_save_pngs(
+    df,
+    tgt_directory,
+    df_name='df',
+):
+    import missingno as msno
+
+    # creating target directory + saving variable
+    # tgt_msno_directory = tgt_directory+'\\'+'msno_report-'+df_name
+    # if os.path.exists(tgt_msno_directory):
+    #     print(f"Directory {tgt_msno_directory} already exists.")
+    # else:
+    #     try:
+    #         os.makedirs(tgt_msno_directory)
+    #         print(f"Directory {tgt_msno_directory} created.")
+    #     except OSError as e:
+    #         raise OSError(
+    #             f"Error creating directory {tgt_msno_directory}: {str(e)}")
+
+    # saving matrix figures
+    fig_matrix = msno.matrix(df)
+    fig_matrix = fig_matrix.get_figure()
+    fig_matrix.savefig(
+        tgt_directory+'\\'+'msno_matrix-'+df_name+'.png',
+        bbox_inches='tight'
+    )
+
+    # saving heatmap figures
+    fig_heatmap = msno.heatmap(df)
+    fig_heatmap = fig_heatmap.get_figure()
+    fig_heatmap.savefig(
+        tgt_directory+'\\'+'msno_heatmap-'+df_name+'.png',
+        bbox_inches='tight'
+    )
+
 
 # %%
 # excel data sheet to data profilers function

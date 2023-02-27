@@ -48,10 +48,10 @@ def msno_eda_save_pngs(
     )
 
 
-# %% final orchestration function
+# %% excel_auto_eda_run orchestration function
 
 
-def excel_to_eda_tools(
+def excel_auto_eda_run(
     excel_path,
     sheet_name,
     toggle_ydata=True,
@@ -170,7 +170,7 @@ toggle_missingno = sys.argv[5] == 'ON'
 
 # %%
 # eda.excel_to_eda_tools(
-excel_to_eda_tools(
+excel_auto_eda_run(
     excel_path=excel_path_input,
     sheet_name=sheet_name_input,
     toggle_ydata=toggle_ydata,
