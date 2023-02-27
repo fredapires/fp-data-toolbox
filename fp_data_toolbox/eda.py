@@ -15,6 +15,7 @@ import numpy as np
 # personal projects
 # import fp_data_toolbox as fpdt
 from fp_data_toolbox import file_handling
+from fp_data_toolbox import eda
 
 
 # %% ---
@@ -400,8 +401,8 @@ def excel_auto_eda_run(
 
         # TODO: fill out this section :noted_on:2023-02-26
         # [ ] test
-        
-        general_report_out_path=tgt_directory+'\\'+sheet_name+'-general-report.xlsx'
+
+        general_report_out_path = tgt_directory+'\\'+sheet_name+'-general-report.xlsx'
         df_info_to_excel(
             df=df,
             filepath=general_report_out_path,
