@@ -16,19 +16,19 @@
             - [ ] some small changes to default config
         - [ ] test
     - [ ] simple python script orchestrating the following:
-        - [ ] develop
+        - [x] develop
             - [x] takes in sys.args from .bat script
             - [x] load data from excel sheet using passed in variables
             - [x] load data into pandas df
             - [ ] cleaning / prep operations
-            - [ ] use data to generate ydata_profiling report
+            - [x] use data to generate ydata_profiling report
                 - in same directory as excel file
-        - [ ] test
+        - [x] test
     - [x] VBA script for:
         - [x] develop
             - [x] passing variables to batch
             - [x] kicking off python
-        - [ ] test
+        - [x] test
 
 ### **In Progress...**
 
