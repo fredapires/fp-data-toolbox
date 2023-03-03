@@ -22,6 +22,7 @@ pyperclip = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
 jaro-winkler = "*"
 openpyxl = "*"
+xgboost = "*"
 
 [dev-packages]
 faker = "*"
