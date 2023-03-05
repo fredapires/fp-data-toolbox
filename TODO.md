@@ -4,6 +4,19 @@
 
 <br>
 
+- TODO: ML model pipeline :2023-03-05
+    - setup simple, template for building and training Timeseries prediction model
+    - ipynb notebook
+    - based on notebook from professional project
+    - [ ] Using XGBoost to start
+        - [ ] data analysis visualization before training
+        - [ ] data cleaning
+        - [ ] Feature creation
+        - [ ] build/train
+        - [ ] hyperparameter optimization
+
+<br>
+
 - TODO: Excel data sheet -> ydata report :2023-02-25
     - build and test out end 2 end process
     - [x] python function for opening sheet and loading to df
