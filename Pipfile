@@ -17,11 +17,13 @@ jupyter-helpers = "*"
 win10toast = "*"
 pyarrow = "*"
 pyautogui = "*"
-sklearn = "*"
 pyperclip = "*"
 jaro-winkler = "*"
 xgboost = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+scikit-learn = "*"
+fredapi = "*"
+plotly = "*"
 
 [dev-packages]
 faker = "*"

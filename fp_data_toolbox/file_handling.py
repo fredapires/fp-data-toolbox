@@ -5,6 +5,37 @@ import glob
 import datetime as dt
 import pandas as pd
 
+
+# %%
+
+
+def daily_api_buffer(df, file_name):
+    """
+    Saves a daily version of a Pandas DataFrame as a Parquet file in the same directory, 
+    only if a file of the same name with a daily timestamp doesn't already exist.
+
+    Used to prevent excessive API calls when testing data pipelines. 
+
+    Parameters:
+        df (Pandas DataFrame): The DataFrame to be saved.
+        file_name (str): The base name of the file.
+
+    Returns:
+        None
+    """
+
+    # Check if a file with the same name and daily timestamp already exists
+    timestamp = dt.datetime.now().strftime('%Y%m%d')
+    file_path = f"{file_name}-{timestamp}.parquet"
+    if os.path.exists(file_path):
+        print(f"File {file_path} already exists. Skipping save operation.")
+        return
+
+    # Save the DataFrame as a Parquet file
+    df.to_parquet(file_path)
+    print(f"DataFrame saved as {file_path}.")
+
+
 # %%
 
 
