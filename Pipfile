@@ -1,0 +1,33 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+build = "*"
+numpy = "*"
+matplotlib = "*"
+seaborn = "*"
+missingno = "*"
+ydata-profiling = "*"
+pandas-profiling = "*"
+dataprep = "*"
+jupyter-helpers = "*"
+win10toast = "*"
+pyarrow = "*"
+pyautogui = "*"
+pyperclip = "*"
+jaro-winkler = "*"
+xgboost = "*"
+fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+scikit-learn = "*"
+fredapi = "*"
+plotly = "*"
+
+[dev-packages]
+faker = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.10"

@@ -10,7 +10,6 @@ __pycache__/
 # C extensions
 *.so
 
-
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -35,7 +34,9 @@ coverage.xml
 *.cover
 
 # virtual environment
-venv/
+.venv/
+Pipfile.lock
+*.lock
 
 # Translations
 *.mo

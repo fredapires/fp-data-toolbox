@@ -4,20 +4,48 @@
 
 <br>
 
+- TODO: ML model pipeline :2023-03-05
+    - setup simple, template for building and training Timeseries prediction model
+    - ipynb notebook
+    - based on notebook from professional project
+    - [ ] Using XGBoost to start
+        - [ ] data analysis visualization before training
+        - [ ] data cleaning
+        - [ ] Feature creation
+        - [ ] build/train
+        - [ ] hyperparameter optimization
+
+<br>
+
+- TODO: Excel data sheet -> ydata report :2023-02-25
+    - build and test out end 2 end process
+    - [x] python function for opening sheet and loading to df
+        - must take in workbook path and sheet names as variables
+        - [x] develop
+        - [x] test
+    - [ ] python function for setting up ydata_config.yaml
+        - based on professional version. should work the same
+        - [ ] develop
+            - [ ] some small changes to default config
+        - [ ] test
+    - [ ] simple python script orchestrating the following:
+        - [x] develop
+            - [x] takes in sys.args from .bat script
+            - [x] load data from excel sheet using passed in variables
+            - [x] load data into pandas df
+            - [ ] cleaning / prep operations
+            - [x] use data to generate ydata_profiling report
+                - in same directory as excel file
+        - [x] test
+    - [x] VBA script for:
+        - [x] develop
+            - [x] passing variables to batch
+            - [x] kicking off python
+        - [x] test
+
 ### **In Progress...**
 
 ---
-
-- TODO: continue to add cleaning functions to [clean.py](fp_data_toolbox/clean.py) :2022-10-11
-    - from `mtg-etl`
-
-- TODO review how to setup virtual environments for projects: 2022-10-10
-    - setup virtual environment (/venv in all projects) and automated script for rebuilding venv
-    - See [dev_env_setup.bat](scripts/batch/dev_env_setup.bat), [venv](venv/)
-    - [ ] `fp_data_toolbox`
-    - [ ] `mtg-proj`
-    - [ ] `music-prod`
-    - [ ] `personal-proj`
 
 <br><br>
 
@@ -27,49 +55,11 @@
 
 <br>
 
+- TODO: continue to add cleaning functions to [clean.py](fp_data_toolbox/clean.py) :2022-10-11
+    - from `mtg-etl`
+    - and from more abstract and general data cleaning ideas
+
 - TODO improve [master .bat script](scripts/batch/_master_script.bat)
     - add more automatic orchestration to be run regularly
 
 <br><br>
-
-### **Done**
-
----
-
-<br>
-
-- DONE: change the show source control view keybing in VS code keybinds :2023-01-29
-    - make it much more accessible
-
-- DONE review simple python functions that should be snippets (due to simplicity):2023-01-29
-
-- DONE outline notes for the structure of a Python Data Personal "Toolbox" package
-- DONE package/repo itself has the following goals:
-    - [x] github repo as central "source of truth" repository
-    - optional goals:
-        - [x] installable through pip
-- DONE setup virtual environment for package
-
-<br><br>
-
-- DONE figure out how to `pip install` this project from work pc
-- DONE install on home pc
-- DONE install on work laptop pc
-
-<br><br>
-
-- DONE refactor to dos in this project to conform to final to do format: 2022-10-04
-
-- DONE abstract common df functions from `mtg-proj` into functions within this project
-
-<br><br>
-
-- DONE complete [master .bat script](scripts/batch/_master_script.bat) for orchestrating all updates at once
-
-- DONE: setup `project_path` module in this project:2022-10-10
-
-- DONE rename certain projects: 2022-10-10
-    - [x] `fp_data_toolbox` --> `fp-data-toolbox`
-    - [x] `music-prod` --> `music-prod-proj`
-
-- DONE delete `resume-md` project from project manager?
