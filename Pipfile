@@ -25,6 +25,7 @@ scikit-learn = "*"
 fredapi = "*"
 plotly = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+openpyxl = "*"
 
 [dev-packages]
 faker = "*"

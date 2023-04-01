@@ -1,4 +1,10 @@
 # # **pires_delgado_financial_model-dev**
+
+# %%
+### TODO: explore the `fredapi` api for data collection :noted_on:2023-04-01
+### TODO: explore the `pyzillow` api for data collection :noted_on:2023-04-01
+
+
 # %%
 # ## **Variable Inputs**
 
