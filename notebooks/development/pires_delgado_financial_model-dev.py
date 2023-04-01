@@ -4,6 +4,8 @@
 
 # %% ---
 
+from sklearn.linear_model import LinearRegression
+from fredapi import Fred
 import numpy as np
 import pandas as pd
 import plotly.express as px
@@ -16,7 +18,8 @@ notifier.setup()  # Enable for windows toast notifications on Jupyter cell compl
 df = pd.DataFrame()  # creating empty dataframe variable
 params = {}  # creating empty parameters dictionary
 
-# %% 
+
+# %%
 start_dt_mortgage = '2023-05-01'
 current_date = ''
 
@@ -65,10 +68,86 @@ debt_inputs = {
     # 'marissa_student': 0,
 }
 
-#
-# ## **Imports / Environment Setup**
-
 # %% ---
+
+
+# replace with your FRED API key
+# replace with your FRED API key
+fred = Fred(api_key='ed0a736bb61e29e91648917fec70e2e6')
+
+
+def get_fred_data(series_id, start_date=None, end_date=None):
+    """
+    Retrieves FRED data for a given series ID and date range.
+    Returns a pandas dataframe.
+    """
+    data = fred.get_series(series_id, start_date=start_date,
+                           end_date=end_date, frequency='m')
+    df = pd.DataFrame({series_id: data})
+    df.index.name = 'DATE'
+    return df
+
+
+def forecast_linear_regression(df, forecast_periods=12):
+    """
+    Creates a linear regression model and makes predictions for a given dataframe.
+    Returns a pandas dataframe with historical and forecasted data.
+    """
+    # Splitting data into training and test sets
+    train = df.iloc[:-forecast_periods]
+    test = df.iloc[-forecast_periods:]
+    # Creating a linear regression model and training it
+    model = LinearRegression()
+    model.fit(train.index.to_julian_date().values.reshape(-1, 1), train.values)
+    # Making predictions for the forecast period
+    forecast_index = pd.date_range(
+        start=test.index[0] - pd.offsets.MonthBegin(1), periods=forecast_periods, freq='M')
+    forecast_index_float = forecast_index.to_julian_date().values.reshape(-1, 1)
+    forecast = pd.DataFrame(model.predict(forecast_index_float),
+                            index=forecast_index, columns=['forecast'])
+    # Combining historical and forecasted data into a single dataframe
+    result = pd.concat([df, forecast])
+    return result
+
+
+# Retrieving historical data for US inflation rates (CPI change YoY)
+us_inflation = get_fred_data('CPILFESL', start_date='2000-01-01')
+us_inflation.rename(columns={'CPILFESL': 'inflation_rates'}, inplace=True)
+
+# Retrieving historical data for US national interest rates on 30-year home mortgages
+us_mortgage_rates = get_fred_data('MORTGAGE30US', start_date='2000-01-01')
+us_mortgage_rates.rename(
+    columns={'MORTGAGE30US': 'mortgage_rates'}, inplace=True)
+
+# Creating a forecast for US inflation rates using linear regression
+df_us_inflation_forecast = forecast_linear_regression(us_inflation)
+
+# Creating a forecast for US national interest rates on 30-year home mortgages using linear regression
+df_us_mortgage_rates_forecast = forecast_linear_regression(us_mortgage_rates)
+df_us_mortgage_rates_forecast = df_us_mortgage_rates_forecast.shift(
+    periods=-1, freq='MS')
+
+# remove duplicates in index of us_inflation
+df_us_inflation_forecast = df_us_inflation_forecast[~df_us_inflation_forecast.index.duplicated(
+    keep='first')]
+
+# remove duplicates in index of us_mortgage_rates
+df_us_mortgage_rates_forecast = df_us_mortgage_rates_forecast[~df_us_mortgage_rates_forecast.index.duplicated(
+    keep='first')]
+
+# concatenate dataframes with unique indexes
+df_forecast = pd.concat(
+    [df_us_inflation_forecast, df_us_mortgage_rates_forecast], axis=1)
+
+# %%
+# ISSUE: the above inflation and mortgage rate function are not working
+# they are close to working properly
+# more cleaning and transforming needs to happen at the end
+
+# Outputting dataframes
+
+# df_forecast.to_clipboard(
+#     excel=True, index=False, header=True)
 
 
 # %% ---
