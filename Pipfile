@@ -20,10 +20,11 @@ pyautogui = "*"
 pyperclip = "*"
 jaro-winkler = "*"
 xgboost = "*"
-fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
 scikit-learn = "*"
 fredapi = "*"
 plotly = "*"
+fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+numpy-financial = "*"
 
 [dev-packages]
 faker = "*"
