@@ -9,7 +9,16 @@ import pandas as pd
 import plotly.express as px
 from fp_data_toolbox import eda, notifier
 import numpy_financial as npf
+# custom imports
+notifier.setup()  # Enable for windows toast notifications on Jupyter cell complete
+# Magics env settings...
+# env variables
+df = pd.DataFrame()  # creating empty dataframe variable
+params = {}  # creating empty parameters dictionary
+
+# %% 
 start_dt_mortgage = '2023-05-01'
+current_date = ''
 
 house_sale_inputs = {
     'house_price': 410000,
@@ -60,17 +69,49 @@ debt_inputs = {
 # ## **Imports / Environment Setup**
 
 # %% ---
-# custom imports
-notifier.setup()  # Enable for windows toast notifications on Jupyter cell complete
-# Magics env settings...
-# env variables
-df = pd.DataFrame()  # creating empty dataframe variable
-params = {}  # creating empty parameters dictionary
+
 
 # %% ---
-# TODO: input adjustments over time here
+# ## **Creating more variables / parameters**
+
+def mortgage_payment(interest_rate, loan_term, loan_amount):
+    return npf.pmt(interest_rate/12, loan_term*12, -loan_amount)
 
 
+# %% ---
+loan_amount = house_sale_inputs['house_price'] - \
+    house_sale_inputs['down_payment']
+monthly_mortgage_payment = mortgage_payment(
+    house_sale_inputs['interest_rate'], house_sale_inputs['loan_term'], loan_amount
+)
+
+new_expenses_monthly_inputs = {
+    'mortgage_payment': monthly_mortgage_payment
+}
+expenses_monthly_inputs.update(new_expenses_monthly_inputs)
+
+
+# %% --- Define months array for lining up timing
+months = pd.date_range(start=start_dt_mortgage,
+                       periods=house_sale_inputs['loan_term']*12, freq='M')
+
+
+# %% ---------------------------------------------------
+# Create the DataFrame directly with the data and the index
+df = pd.DataFrame(
+    {
+        'mortgage_balance': npf.ppmt(house_sale_inputs['interest_rate']/12, range(1, house_sale_inputs['loan_term']*12 + 1), house_sale_inputs['loan_term']*12, -loan_amount).cumsum(),
+        **{'income_'+key: value for key, value in income_monthly_inputs.items()},
+        **{'expense_'+key: value for key, value in expenses_monthly_inputs.items()},
+    },
+    index=months
+)
+
+
+# %% ---
+# TODO: add inflation growth logic here :noted_on:2023-03-31
+
+# grow with infaltion column function
 def grow_column_with_inflation_monthly(
     df,
     column,
@@ -85,54 +126,10 @@ def grow_column_with_inflation_monthly(
 
     return df
 
-
 # %% ---
-# ## **Calculate and construct data**
-
-new_income_monthly_inputs = {
-}
-income_monthly_inputs.update(new_income_monthly_inputs)
 
 
 # %% ---
-
-def mortgage_payment(interest_rate, loan_term, loan_amount):
-    return npf.pmt(interest_rate/12, loan_term*12, -loan_amount)
-
-
-# %% ---
-loan_amount = house_sale_inputs['house_price'] - \
-    house_sale_inputs['down_payment']
-monthly_mortgage_payment = mortgage_payment(
-    house_sale_inputs['interest_rate'], house_sale_inputs['loan_term'], loan_amount
-)
-
-
-new_expenses_monthly_inputs = {
-    'mortgage_payment': monthly_mortgage_payment
-}
-expenses_monthly_inputs.update(new_expenses_monthly_inputs)
-
-# TODO: add inflation growth logic here :noted_on:2023-03-31
-
-# %% ---
-
-# %% ---
-months = pd.date_range(start=start_dt_mortgage,
-                       periods=house_sale_inputs['loan_term']*12, freq='M')
-
-# %% ---
-# ---------------------------------------------------
-# Create the DataFrame directly with the data and the index
-df = pd.DataFrame(
-    {
-        'mortgage_balance': npf.ppmt(house_sale_inputs['interest_rate']/12, range(1, house_sale_inputs['loan_term']*12 + 1), house_sale_inputs['loan_term']*12, -loan_amount).cumsum(),
-        **{'income_'+key: value for key, value in income_monthly_inputs.items()},
-        **{'expense_'+key: value for key, value in expenses_monthly_inputs.items()},
-    },
-    index=months
-)
-
 # Calculate the 'net_cash_flow' column
 total_income = df.filter(regex='^income_').sum(axis=1)
 total_expenses = df.filter(regex='^expense_').sum(axis=1)
@@ -141,9 +138,8 @@ df['net_cash_flow_monthly'] = total_income - total_expenses
 df['expenses_monthly_total'] = sum(expenses_monthly_inputs.values())
 df['income_monthly_total'] = df['income_monthly_fred'] + \
     df['income_monthly_marissa']
-# ---------------------------------------------------
 
-# %% ---
+# %% -----------------------------------------------------
 
 
 def extract_datetime_features(df, date_col):
@@ -212,7 +208,6 @@ df = extract_datetime_features(
 df = df.set_index('TIME_INDEX')
 
 # %% ---
-#
 # ### re-order columns here
 
 df = df.convert_dtypes()
