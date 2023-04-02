@@ -27,3 +27,18 @@ def ingest_excel_data(file_path: str, sheet_name: str, start_cell: str) -> pd.Da
     df.columns = df.iloc[0]
     df = df.iloc[1:]
     return df
+
+
+
+### TODO: gpt prompt for later
+    # function from prompt
+    # extract basic data model sketch from excel workbook
+    # disect typical objects in excel to typical objects in python
+    # excel table -> pandas df
+    # formulas -> pandas
+    # worksheets -> name of pandas df
+    # named tables able to be picked up by openpyxl?
+    
+    
+
+
