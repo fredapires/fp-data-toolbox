@@ -26,6 +26,7 @@ xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+lux-api = "*"
 
 [dev-packages]
 faker = "*"
