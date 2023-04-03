@@ -1,8 +1,8 @@
 # # **pires_delgado_financial_model-dev**
 
 # %%
-### TODO: explore the `fredapi` api for data collection :noted_on:2023-04-01
-### TODO: explore the `pyzillow` api for data collection :noted_on:2023-04-01
+# TODO: explore the `fredapi` api for data collection :noted_on:2023-04-01
+# TODO: explore the `pyzillow` api for data collection :noted_on:2023-04-01
 
 
 # %%
@@ -10,6 +10,9 @@
 
 # %% ---
 
+import fredapi
+import openpyxl
+import datetime as dt
 from sklearn.linear_model import LinearRegression
 from fredapi import Fred
 import numpy as np
@@ -18,7 +21,7 @@ import plotly.express as px
 from fp_data_toolbox import eda, notifier
 import numpy_financial as npf
 # custom imports
-notifier.setup()  # Enable for windows toast notifications on Jupyter cell complete
+# notifier.setup()  # Enable for windows toast notifications on Jupyter cell complete
 # Magics env settings...
 # env variables
 df = pd.DataFrame()  # creating empty dataframe variable
@@ -74,12 +77,59 @@ debt_inputs = {
     # 'marissa_student': 0,
 }
 
+
+# %% Excel interface with python function definitions here
+
+
+# inputs_dictionary = import_xl_named_ranges(
+#     'personal_finance_model.xlsm',
+# )
+
+# %%
+
+# print(dfs_from_xl)
+# print(inputs_dictionary)
+
+# %%
+
+
+def create_df_monthly_calendar(start_year, start_month, end_year, end_month):
+    start_date = pd.Timestamp(year=start_year, month=start_month, day=1)
+    end_date = pd.Timestamp(year=end_year, month=end_month, day=1)
+    date_range = pd.date_range(start=start_date, end=end_date, freq="MS")
+    data = []
+    for date in date_range:
+        month_data = {
+            "year": date.year,
+            "quarter": (date.month - 1) // 3 + 1,
+            "month_of_year": date.month,
+            "month_of_quarter": (date.month - 1) % 3 + 1
+        }
+        data.append(month_data)
+    df_calendar = pd.DataFrame(data)
+    df_calendar.index = pd.date_range(
+        start=start_date, end=end_date, freq="MS")
+    return df_calendar
+
+
+df_monthly_calendar = create_df_monthly_calendar(
+    start_month=1,
+    start_year=1990,
+    end_year=2060,
+    end_month=12
+)
+
+
 # %% ---
-
-
 # replace with your FRED API key
-# replace with your FRED API key
-fred = Fred(api_key='ed0a736bb61e29e91648917fec70e2e6')
+
+# Define the FRED API key and create a FRED API object
+fred_api_key = 'ed0a736bb61e29e91648917fec70e2e6'
+fred = fredapi.Fred(api_key=fred_api_key)
+
+# Define the start and end dates for the data
+start_date = '2000-01-01'
+end_date = '2023-03-01'
 
 
 def get_fred_data(series_id, start_date=None, end_date=None):
@@ -116,39 +166,46 @@ def forecast_linear_regression(df, forecast_periods=12):
     return result
 
 
-# Retrieving historical data for US inflation rates (CPI change YoY)
-us_inflation = get_fred_data('CPILFESL', start_date='2000-01-01')
-us_inflation.rename(columns={'CPILFESL': 'inflation_rates'}, inplace=True)
+# Retrieve the inflation, producer price, and interest rate data
+inflation_data = get_fred_data(
+    'CPIAUCSL', start_date=start_date, end_date=end_date)
+producer_price_data = get_fred_data(
+    'PPIACO', start_date=start_date, end_date=end_date)
+interest_rate_data = get_fred_data(
+    'FEDFUNDS', start_date=start_date, end_date=end_date)
 
-# Retrieving historical data for US national interest rates on 30-year home mortgages
-us_mortgage_rates = get_fred_data('MORTGAGE30US', start_date='2000-01-01')
-us_mortgage_rates.rename(
-    columns={'MORTGAGE30US': 'mortgage_rates'}, inplace=True)
+# Combine the data into a single dataframe
+combined_data = pd.concat(
+    [inflation_data, producer_price_data, interest_rate_data], axis=1)
 
-# Creating a forecast for US inflation rates using linear regression
-df_us_inflation_forecast = forecast_linear_regression(us_inflation)
+# Add columns for the year and month
+combined_data['YEAR'] = combined_data.index.year
+combined_data['MONTH'] = combined_data.index.month
 
-# Creating a forecast for US national interest rates on 30-year home mortgages using linear regression
-df_us_mortgage_rates_forecast = forecast_linear_regression(us_mortgage_rates)
-df_us_mortgage_rates_forecast = df_us_mortgage_rates_forecast.shift(
-    periods=-1, freq='MS')
+combined_data = combined_data.query(
+    f'YEAR >= 1980 and YEAR <= 2200')
 
-# remove duplicates in index of us_inflation
-df_us_inflation_forecast = df_us_inflation_forecast[~df_us_inflation_forecast.index.duplicated(
-    keep='first')]
+# Add a column for whether each row represents actual data or a forecast
+current_date = dt.date(2023, 3, 1)
+combined_data['ACTUALS_FORECAST_IND'] = combined_data.index.map(
+    lambda x: 'ACTUALS' if x <= current_date else 'FORECAST')
 
-# remove duplicates in index of us_mortgage_rates
-df_us_mortgage_rates_forecast = df_us_mortgage_rates_forecast[~df_us_mortgage_rates_forecast.index.duplicated(
-    keep='first')]
+# Reorder the columns
+combined_data = combined_data[[
+    'YEAR', 'MONTH', 'ACTUALS_FORECAST_IND', 'CPIAUCSL', 'PPIACO', 'FEDFUNDS']]
 
-# concatenate dataframes with unique indexes
-df_forecast = pd.concat(
-    [df_us_inflation_forecast, df_us_mortgage_rates_forecast], axis=1)
+# Rename the columns
+combined_data.columns = ['YEAR', 'MONTH', 'ACTUALS_FORECAST_IND',
+                         'INFLATION', 'PRODUCER_PRICE', 'INTEREST_RATE']
+# Reset the index
+df_fredapi = combined_data
+
+# Print the resulting dataframe
+# print(df_fredapi)
+
 
 # %%
-# ISSUE: the above inflation and mortgage rate function are not working
-# they are close to working properly
-# more cleaning and transforming needs to happen at the end
+
 
 # Outputting dataframes
 
@@ -304,20 +361,63 @@ df = df.convert_dtypes()
 df.info()
 
 # %% --- ---
-df.to_clipboard(excel=True, index=False, header=True)
+# df.to_clipboard(excel=True, index=False, header=True)
 
 # %% --- ---
 # ## **Outputs**
+
+
+def update_named_table(file_path, table_name, df):
+    """
+    Update named Excel table with matching dataframe name.
+
+    Args:
+        file_path (str): The file path of the Excel workbook.
+        table_name (str): The name of the named range/table in the Excel workbook.
+        df (pandas.DataFrame): The pandas dataframe to update the named range/table with.
+
+    Example:
+        >>> df_new_sales = pd.DataFrame({
+        ...     "Region": ["West", "East"],
+        ...     "Sales": [100, 200]
+        ... })
+        >>> update_named_table("path/to/workbook.xlsx", "Sales", df_new_sales)
+    """
+    from openpyxl.utils.dataframe import dataframe_to_rows
+    wb = openpyxl.load_workbook(file_path)
+    ws = wb[table_name]
+    for r in dataframe_to_rows(df, index=False, header=True):
+        ws.append(r)
+    wb.save(file_path)
+
+
+def update_named_cell(file_path, cell_name, value):
+    """
+    Update value of named Excel cell.
+
+    Args:
+        file_path (str): The file path of the Excel workbook.
+        cell_name (str): The name of the named cell in the Excel workbook.
+        value: The new value to set the named cell to.
+
+    Example:
+        >>> new_value = 500
+        >>> update_named_cell("path/to/workbook.xlsx", "my_named_cell", new_value)
+    """
+    wb = openpyxl.load_workbook(file_path)
+    wb[cell_name].value = value
+    wb.save(file_path)
+
 
 # output conversions
 df = df
 
 # %% --- ---
 # Save the calculation output as a CSV file
-df.to_csv('home_financial_output.csv', index=False)
+# df.to_csv('home_financial_output.csv', index=False)
 
 # Save the calculation output as a Parquet file
-df.to_parquet('home_financial_output.parquet', index=False)
+# df.to_parquet('home_financial_output.parquet', index=False)
 
 # %% --- ---
 # stop
