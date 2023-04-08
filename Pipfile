@@ -12,6 +12,8 @@ openpyxl = "*"
 matplotlib = "*"
 seaborn = "*"
 plotly = "*"
+lux = "*"
+lux-api = "*"
 missingno = "*"
 ydata-profiling = "*"
 pandas-profiling = "*"
@@ -26,11 +28,10 @@ xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
-lux-api = "*"
 
 [dev-packages]
 faker = "*"
 pytest = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.9"
