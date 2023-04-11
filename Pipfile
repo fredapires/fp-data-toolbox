@@ -4,6 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+python-dotenv = "*"
+pyperclip = "*"
+jupyter-helpers = "*"
+win10toast = "*"
+pyautogui = "*"
 pandas = "*"
 build = "*"
 numpy = "*"
@@ -18,17 +23,12 @@ missingno = "*"
 ydata-profiling = "*"
 pandas-profiling = "*"
 dataprep = "*"
-jupyter-helpers = "*"
-win10toast = "*"
 pyarrow = "*"
-pyautogui = "*"
-pyperclip = "*"
 jaro-winkler = "*"
 xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
-python-dotenv = "*"
 
 [dev-packages]
 faker = "*"
