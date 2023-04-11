@@ -1,33 +1,59 @@
-::--- ======================================================
-:: env file sync between python projects
-:: keeps env consistent across projects
-::--- ======================================================
-@echo off
-
-:: setup source for sync
+::@echo off
 set "source_dir=C:\git\fp_data_toolbox-proj"
 
-:: Set up list of file names
-set "file_names=(
-    Pipfile 
-    .env 
-    .gitignore
-    )"
+::--- ======================================================
+@echo off
+set "file_name=.env"
 
-:: Set up list of destination projects for sync
-set "destination_dirs=(
-    C:\git\personal-proj
-    C:\git\fp-ds-proj-template
-    C:\git\mtg-proj
-    C:\git\music-prod
-    )"
+:: copying pipfile to data validation project
+set "destination_dir=C:\git\fp-ds-proj-template"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
 
-:: Loop through each destination directory
-for %%D in %destination_dirs% do (
-    :: Loop through each file name
-    for %%F in %file_names% do (
-        xcopy /Y /F "%source_dir%\%%F" "%%D\%%F"
-    )
-)
+:: copying pipfile to dom trans project
+set "destination_dir=C:\git\mtg-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+:: copying pipfile to intl str lnd project
+set "destination_dir=C:\git\personal-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
 
 ::--- ======================================================
+
+set "file_name=.gitignore"
+
+:: copying pipfile to data validation project
+set "destination_dir=C:\git\fp-ds-proj-template"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+:: copying pipfile to dom trans project
+set "destination_dir=C:\git\mtg-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+:: copying pipfile to intl str lnd project
+set "destination_dir=C:\git\personal-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+
+::--- ======================================================
+
+set "file_name=Pipfile"
+
+:: copying pipfile to data validation project
+set "destination_dir=C:\git\fp-ds-proj-template"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+:: copying pipfile to dom trans project
+set "destination_dir=C:\git\mtg-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+:: copying pipfile to intl str lnd project
+set "destination_dir=C:\git\personal-proj"
+xcopy /Y /F "%source_dir%\%file_name%" "%destination_dir%\%file_name%"
+
+
+
+::--- ======================================================
+
+
+pause
