@@ -28,6 +28,7 @@ xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
 fp-data-toolbox = {git = "https://github.com/fredapires/fp_data_toolbox"}
+python-dotenv = "*"
 
 [dev-packages]
 faker = "*"
