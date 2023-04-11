@@ -1,5 +1,5 @@
 ::@echo off
-set "source_dir=C:\git\fp_data_toolbox-proj"
+set "source_dir=C:\git\fp-data-toolbox-proj"
 
 ::--- ======================================================
 @echo off
