@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "fp-data-toolbox"
+version = "0.1.55"
+description = "personal toolbox for data science"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fp_data_toolbox"}]
+
+
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+python-dotenv = "*"
+pyperclip = "*"
+jupyter-helpers = "*"
+win10toast = "*"
+pyautogui = "*"
+pandas = "*"
+build = "*"
+numpy = "^1.23.5"
+numpy-financial = "*"
+openpyxl = "*"
+matplotlib = "*"
+seaborn = "*"
+plotly = "*"
+lux = "*"
+lux-api = "*"
+missingno = "*"
+pandas-profiling = "*"
+dtale = "*"
+dataprep = "*"
+pyarrow = "*"
+jaro-winkler = "*"
+xgboost = "*"
+scikit-learn = "*"
+fredapi = "*"
+# ydata-profiling = "*"
+# scipy = "^1.10.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
