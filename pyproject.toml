@@ -8,8 +8,6 @@ readme = "README.md"
 packages = [{include = "fp_data_toolbox"}]
 
 
-
-
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
 python-dotenv = "*"
@@ -36,9 +34,16 @@ jaro-winkler = "*"
 xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
+kaleido = "0.2.1"
 # ydata-profiling = "*"
 # scipy = "^1.10.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[[tool.poetry.source]]
+name = "conda-forge"
+url = "https://conda.anaconda.org/conda-forge/"
+
