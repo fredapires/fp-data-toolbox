@@ -1,9 +1,9 @@
 
 [tool.poetry]
 name = "fp-data-toolbox"
-version = "0.1.60"
-description = "personal toolbox for data science"
-authors = ["Your Name <you@example.com>"]
+version = "0.1.61"
+description = "personal toolbox for data analytics"
+authors = ["Fred Pires <fredapires@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "fp_data_toolbox"}]
@@ -20,6 +20,7 @@ pandas = "*"
 build = "*"
 numpy = "^1.23.5"
 numpy-financial = "*"
+xlwings = "^0.30.4"
 openpyxl = "*"
 matplotlib = "*"
 seaborn = "*"
@@ -38,7 +39,6 @@ scikit-learn = "*"
 fredapi = "*"
 # kaleido = "0.2.1"
 # scipy = "^1.10.1"
-xlwings = "^0.30.4"
 
 
 [tool.poetry.dev-dependencies]
