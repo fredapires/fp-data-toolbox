@@ -1,4 +1,3 @@
-
 [tool.poetry]
 name = "fp-data-toolbox"
 version = "0.1.61"
