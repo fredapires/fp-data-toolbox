@@ -26,7 +26,8 @@ plotly = "*"
 lux = "*"
 lux-api = "*"
 missingno = "*"
-pandas-profiling = "*"
+ydata-profiling = "*"
+# pandas-profiling = "*"
 dtale = "*"
 dataprep = "*"
 pyarrow = "*"
@@ -34,9 +35,14 @@ jaro-winkler = "*"
 xgboost = "*"
 scikit-learn = "*"
 fredapi = "*"
-kaleido = "0.2.1"
-# ydata-profiling = "*"
+# kaleido = "0.2.1"
 # scipy = "^1.10.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-mock = "*"
+faker = "*"
+
 
 [build-system]
 requires = ["poetry-core"]
