@@ -4,7 +4,8 @@
 
 <br>
 
-- edaSQL
-    - try to copy as many functions in here as you see fit
-    - some pretty useful stuff
-    - <https://pypi.org/project/edaSQL/>
+- `xlwings`
+    - <https://docs.xlwings.org/en/latest/>
+    - [x] test sending data back and forth when you have more than one workbook open
+    - [ ] function for receiving parameters table from excel
+    - [ ] function for updating parameters table in excel with values from python dictionary
