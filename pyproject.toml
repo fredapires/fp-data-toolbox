@@ -24,6 +24,7 @@ openpyxl = "*"
 matplotlib = "*"
 seaborn = "*"
 plotly = "*"
+pygwalker = "*"
 lux = "*"
 lux-api = "*"
 missingno = "*"
@@ -41,10 +42,10 @@ fredapi = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
-pytest-mock = "*"
+# pytest-mock = "*"
 faker = "*"
 black = "*"
-flake8 = "*"
+# flake8 = "*"
 
 
 [build-system]
@@ -52,9 +53,9 @@ requires = ["poetry-core>=1.1.0"]
 build-backend = "poetry.core.masonry.api"
 
 
-[[tool.poetry.source]]
-name = "conda-forge"
-url = "https://conda.anaconda.org/conda-forge/"
+# [[tool.poetry.source]]
+# name = "conda-forge"
+# url = "https://conda.anaconda.org/conda-forge/"
 
 
 [tool.poetry.scripts]
