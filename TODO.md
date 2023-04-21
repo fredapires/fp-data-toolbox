@@ -4,11 +4,21 @@
 
 <br>
 
+- TODO figure out how to properly publish this package with `poetry` venv setup :2023-04-20
+    - i.e.: with setup.py not in barebones state
+        - do I need to somehow automatically populate setup.py on commit with info from pyproject.toml?
+    - [ ] to pypi
+        - [ ] test installing from other venv
+    - [ ] to github
+        - [ ] test installing from other venv
+
+<br>
+
 - TODO: ML model pipeline :2023-03-05
     - setup simple, template for building and training Timeseries prediction model
     - ipynb notebook
     - based on notebook from professional project
-    - [ ] Using XGBoost to start
+    - [x] Using XGBoost to start
         - [ ] data analysis visualization before training
         - [ ] data cleaning
         - [ ] Feature creation
