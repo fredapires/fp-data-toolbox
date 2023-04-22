@@ -35,8 +35,6 @@ coverage.xml
 
 # virtual environment
 .venv/
-Pipfile.lock
-*.lock
 
 # Translations
 *.mo
@@ -62,7 +60,7 @@ target/
 .idea
 
 # VS Code
-.vscode/
+# .vscode/
 
 # Spyder
 .spyproject/
