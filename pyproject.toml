@@ -5,7 +5,9 @@ description = "personal toolbox for data analytics"
 authors = ["Fred Pires <fredapires@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-package = "src"
+packages = [
+    { include = "src" },
+]
 
 
 [tool.poetry.dependencies]
