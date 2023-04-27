@@ -60,8 +60,8 @@ build-backend = "poetry.core.masonry.api"
 # url = "https://conda.anaconda.org/conda-forge/"
 
 
-[tool.poetry.scripts]
-your_script_name = "fp-data-toolbox:main"
+# [tool.poetry.scripts]
+# your_script_name = "fp-data-toolbox:main"
 
 
 [tool.poetry.plugins."poetry-dynamic-versioning"]
