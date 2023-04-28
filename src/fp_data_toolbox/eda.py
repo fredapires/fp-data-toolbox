@@ -12,10 +12,8 @@ from datetime import date
 import pandas as pd
 import numpy as np
 
-# personal projects
-# import fp_data_toolbox as fpdt
-from fp_data_toolbox import file_handling
-from fp_data_toolbox import eda
+# internal reference
+from . import file_handling
 
 
 # %% ---
