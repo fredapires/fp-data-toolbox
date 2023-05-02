@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fp-data-toolbox"
-version = "0.1.64"
+version = "0.1.65"
 description = "personal toolbox for data analytics"
 authors = ["Fred Pires <fredapires@gmail.com>"]
 license = "MIT"
