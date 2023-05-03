@@ -5,6 +5,7 @@ SET _DST="C:\Users\Fred\OneDrive\git_repos\fp-data-toolbox-proj"
 SET _xd=.git
 SET _xd=%_xd% .vscode
 SET _xd=%_xd% .venv
+SET _xd=%_xd% dist
 SET _xd=%_xd% data
 SET _xd=%_xd% node_modules
 

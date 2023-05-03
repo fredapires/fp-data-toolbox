@@ -1,4 +1,3 @@
-@REM cd into package directory
 @echo off
 
 @REM echo This is the git-pre-push-hook-script running.
