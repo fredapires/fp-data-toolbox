@@ -1,5 +1,5 @@
-SET _SRC="C:\git\fp-data-toolbox-proj\"
-SET _DST="C:\Users\Fred\OneDrive\git_repos\fp-data-toolbox-proj\"
+SET _SRC="C:\git\fp-data-toolbox-proj"
+SET _DST="C:\Users\Fred\OneDrive\git_repos\fp-data-toolbox-proj"
 
 :: add more folders to exclude here
 SET _xd=.git
