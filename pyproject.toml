@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fp-data-toolbox"
-version = "0.1.65"
+version = "0.1.66"
 description = "personal toolbox for data analytics"
 authors = ["Fred Pires <fredapires@gmail.com>"]
 license = "MIT"
@@ -14,6 +14,8 @@ exclude = ["src/tests/**/*"]
 python = ">=3.9,<3.11"
 python-dotenv = "*"
 pyperclip = "*"
+jupyter = "*"
+ipykernel = "*"
 jupyter-helpers = "*"
 win10toast = "*"
 pyautogui = "*"
