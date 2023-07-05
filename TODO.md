@@ -4,6 +4,20 @@
 
 <br>
 
+---
+
+- TODO: IDEA: "Jira tracker -> TODO.md sync process" :2023-07-04
+
+```mermaid
+graph TD
+    A[Jira Tracker] -->|JQL query through Jira add-in| B(Excel / .csv file) -->|Python script| C(TODO.md file)
+    
+```
+
+---
+
+<br>
+
 - TODO figure out how to properly publish this package with `poetry` venv setup :2023-04-20
     - i.e.: with setup.py not in barebones state
         - do I need to somehow automatically populate setup.py on commit with info from pyproject.toml?
