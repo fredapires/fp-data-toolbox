@@ -9,7 +9,7 @@
 - TODO: IDEA: "Jira tracker -> TODO.md sync process" :2023-07-04
 
 ```mermaid
-graph TD
+graph LR
     A[Jira Tracker] -->|JQL query through Jira add-in| B(Excel / .csv file) -->|Python script| C(TODO.md file)
     
 ```
