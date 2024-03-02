@@ -10,31 +10,44 @@
 | Custom Type 2  | Description for custom type 2 (e.g., Output)| 🟪 Purple    |
 
 ```mermaid
-graph LR;
+graph BT;
 %%%% Define Nodes
+
+collect(Data Collection):::process
+actuals_raw[Raw Actuals Data]:::data_stored
 subgraph initial_processing [Initial Processing]
-    collect(Data Collection):::process
     preprocess(Preprocessing):::process
     transform(Data Transformation):::process
 end
 
 train(Model Training):::process
-predict(Make Predictions):::process
-analysis_data[Analysis Dataset]:::data_stored
 
+prediction[Future Predictions]:::data_stored
+actuals_analysis[Analysis Actuals Data]:::data_stored
+reporting_actuals_data[Reporting Actuals Data]:::data_stored
+reporting_data[Full Reporting Data]:::data_stored
+analytics_data[Full Analytics Data]:::data_stored
 subgraph insights [Insights]
     analyze_adhoc[Adhoc Analysis]:::analysis
-    report[Analysis Report]:::reporting
+    reporting_analytics[Analytics Reporting]:::reporting
+    reporting_full[Full Report]:::reporting
 end
 
 %%%% Define connections
-collect --> preprocess
-preprocess --> transform;
-transform --> analysis_data;
-analysis_data --> analyze_adhoc;
-analysis_data --> train;
-analysis_data --> report;
-train --> predict;
+collect --> actuals_raw
+actuals_raw --> preprocess
+preprocess --> transform
+transform --> actuals_analysis
+actuals_analysis --> train
+actuals_analysis --> reporting_actuals_data
+reporting_actuals_data --> reporting_data
+train --> prediction
+prediction --> analytics_data
+actuals_analysis --> analytics_data
+analytics_data --> analyze_adhoc
+analytics_data --> reporting_analytics
+prediction --> reporting_data
+reporting_data --> reporting_full
 
 %%%% Define the styling for the diagram
 classDef default fill:#C2C2C2,stroke:#333,stroke-width:2px,color:black,font-weight:bold;
