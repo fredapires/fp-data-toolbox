@@ -4,7 +4,19 @@
 
 <br>
 
----
+- TODO: XD75 QMK remap
+    - This can serve as a reliable backup board to my usual split setup.
+    - it's close enough to the original, while still staying portable
+    - [ ] setup personal keyboard mappings folder in this project
+    - [ ] figure out how to flash QMK to this keyboard, again...
+    - [ ] remap the XD75 to a mapping that is as similar as possible to the Redox mapping
+    - add o-rings?
+
+- TODO: Redox QMK remap
+- [ ] compile list of changes that I would make to the mapping.
+    - [ ] figure out how to flash QMK to this keyboard, again...
+
+------
 
 - TODO: IDEA: "Jira tracker -> TODO.md sync process" :2023-07-04
 
@@ -19,8 +31,8 @@ graph LR
 <br>
 
 - TODO figure out how to properly publish this package with `poetry` venv setup :2023-04-20
-    - i.e.: with setup.py not in barebones state
-        - do I need to somehow automatically populate setup.py on commit with info from pyproject.toml?
+    - i.e.: with setup.py not in bare bones state
+        - do I need to somehow automatically populate setup.py on commit with info from `pyproject.toml`?
     - [ ] to pypi
         - [ ] test installing from other venv
     - [ ] to github
