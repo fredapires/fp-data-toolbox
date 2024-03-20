@@ -9,6 +9,7 @@
     - it's close enough to the original, while still staying portable
     - [ ] setup personal keyboard mappings folder in this project
     - [ ] figure out how to flash QMK to this keyboard, again...
+        - 
     - [ ] remap the XD75 to a mapping that is as similar as possible to the Redox mapping
     - add o-rings?
 
