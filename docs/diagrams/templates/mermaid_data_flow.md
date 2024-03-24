@@ -10,7 +10,7 @@
 | Custom Type 2 | Description for custom type 2 (e.g., Output) | 🟪 Purple |
 
 ```mermaid
-graph BT;
+graph LR;
 %%%% Define Nodes
 subgraph insights [Insights]
     analyze_adhoc[Adhoc Analysis]:::analysis
