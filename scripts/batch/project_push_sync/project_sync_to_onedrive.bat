@@ -1,4 +1,13 @@
-SET _SRC="C:\git\fp-data-toolbox-proj"
+@echo off
+setlocal
+
+rem Load variables from .env file
+for /f "delims=" %%a in ('type .env') do (
+    set "%%a"
+)
+@REM echo PROJECT_PATH is %PROJECT_PATH%
+
+SET _SRC="C:\fp-pkm\git-repos\fp-data-toolbox"
 SET _DST="C:\Users\Fred\OneDrive\git_repos\fp-data-toolbox-proj"
 
 :: add more folders to exclude here
