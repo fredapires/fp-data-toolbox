@@ -4,13 +4,49 @@
 
 maintain this project as a central repo for data management functions
 
+## Tech Stack setup guide
+
+### Core setup
+
+1. [ ] Download and install [Github Desktop](https://desktop.github.com/)
+2. [ ] clone this repo to local machine
+3. [ ] Download and install [VS Code](https://code.visualstudio.com/)
+    1. [ ] Make sure to sign in to personal account for settings sync
+4. [ ] download and install [Docker Desktop](https://www.docker.com/products/docker-desktop)
+5. [ ] download and install [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+6. [ ] download and install [Python 3.11](https://www.python.org/downloads/)
+    1. [ ] make sure to add to PATH
+7. [ ] download and install [Poetry](https://python-poetry.org/docs/)
+    1. [ ] using poetry setup general python virtual env in users folder structure
+
+#### Testing the Python setup
+
+1. [ ] connect to general python virtual env in users folder structure
+    1. `poetry shell`
+    2. `poetry install`
+    3. `poetry update`
+2. [ ] connect to virtual env with template jupyter notebook and test venv
+
+### Addtional Setup
+
+1. [ ] Download and install [AutoHotKey](https://www.autohotkey.com/)
+    1. Setup for replacing CapsLock with Ctrl
+2. [ ] download and install [Ditto Clipboard Manager](https://ditto-cp.sourceforge.io/)
+
+#### QMK keyboard reflashing setup
+
+1. [ ] download and install [qmk_toolbox](https://github.com/qmk/qmk_toolbox?tab=readme-ov-file)
+2. [ ] download and install [QMK MSYS](https://msys.qmk.fm/)
+3. [ ] clone our personal fork of `qmk_firmware` repo
+    1. [ ] Test building firmware with QMK MSYS
+    2. [ ] Test flashing firmware with `qmk_toolbox`
+
 <br><br><br>
 
-TODO: finish filling out the folder structure below
+## Folder structure explanation
 
 ```
 
-├── LICENSE
 ├── README.md          <- The top-level README for developers using this project.
 │
 ├── data
