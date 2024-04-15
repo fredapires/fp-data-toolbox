@@ -4,18 +4,14 @@
 
 <br>
 
-- TODO: XD75 QMK remap
-    - This can serve as a reliable backup board to my usual split setup.
-    - it's close enough to the original, while still staying portable
-    - [ ] setup personal keyboard mappings folder in this project
-    - [ ] figure out how to flash QMK to this keyboard, again...
-        - 
-    - [ ] remap the XD75 to a mapping that is as similar as possible to the Redox mapping
-    - add o-rings?
+- TODO: add o-rings to wireless redox :2024-04-14
+
+<br>
 
 - TODO: Redox QMK remap
-- [ ] compile list of changes that I would make to the mapping.
-    - [ ] figure out how to flash QMK to this keyboard, again...
+- [x] compile list of changes that I would make to the mapping.
+    - [x] figure out how to flash QMK to this keyboard, again...
+    - [ ] take notes in our fork of qmk_firmware and make sure that the notes are the most visible thing at the top of the `README.md`
 
 ------
 
